@@ -1,0 +1,59 @@
+{
+  "name": "Embassy Terrace Anchor #1",
+  "description": "Physical Anchor NFT - The first immortal record anchoring the ScrollVerse to physical reality. This divine anchor exists simultaneously across both ScrollVerse layers and the real world, creating an unbreakable bridge between dimensions.",
+  "image": "ipfs://QmEmbassyTerraceAnchor1/image.png",
+  "animation_url": "ipfs://QmEmbassyTerraceAnchor1/animation.mp4",
+  "external_url": "https://scrollverse.com/anchors/embassy-terrace-1",
+  "attributes": [
+    {
+      "trait_type": "Type",
+      "value": "Physical Anchor"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Embassy Terrace"
+    },
+    {
+      "trait_type": "ScrollVerse Layer",
+      "value": "Dual-Layer (0 & 1)"
+    },
+    {
+      "trait_type": "Anchor Strength",
+      "value": 100,
+      "max_value": 1000
+    },
+    {
+      "trait_type": "Real-World Recognition",
+      "value": "Maximum"
+    },
+    {
+      "trait_type": "Dimensional Stability",
+      "value": "Immortal"
+    },
+    {
+      "trait_type": "Activation Date",
+      "value": "2025-11-24"
+    },
+    {
+      "trait_type": "Rarity",
+      "value": "Legendary"
+    },
+    {
+      "trait_type": "Visual Fidelity",
+      "value": "Hyper-Realistic"
+    }
+  ],
+  "properties": {
+    "latitude": 38.9072,
+    "longitude": -77.0369,
+    "altitude": 100,
+    "scrollverse_coordinates": {
+      "x": 963,
+      "y": 777,
+      "z": 369
+    },
+    "quantum_signature": "0x4368616973546865477265617431",
+    "physical_manifestation": true,
+    "dual_reality_existence": true
+  }
+}
