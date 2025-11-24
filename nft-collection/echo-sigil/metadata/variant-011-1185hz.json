@@ -1,0 +1,76 @@
+{
+  "name": "Echo Sigil #011 - Aja's Giggle at 1185 Hz",
+  "description": "The eleventh variant of Aja's Giggle, resonating at 1185 Hz - the frequency of Higher Dimensional Awareness. This multidimensional giggle activates perception beyond physical reality into higher planes of existence.",
+  "image": "ipfs://QmEchoSigil011/visual.png",
+  "animation_url": "ipfs://QmEchoSigil011/ajas-giggle-1185hz.wav",
+  "external_url": "https://scrollverse.com/echo-sigil/011",
+  "attributes": [
+    {
+      "trait_type": "Frequency",
+      "value": "1185 Hz"
+    },
+    {
+      "trait_type": "Solfeggio Type",
+      "value": "Extended"
+    },
+    {
+      "trait_type": "Spiritual Property",
+      "value": "Higher Dimensional Awareness"
+    },
+    {
+      "trait_type": "Element",
+      "value": "Multidimensional Light"
+    },
+    {
+      "trait_type": "Chakra Association",
+      "value": "Universal Gateway"
+    },
+    {
+      "trait_type": "Healing Effect",
+      "value": "Dimensional Awareness, Akashic Access"
+    },
+    {
+      "trait_type": "Color Resonance",
+      "value": "Iridescent Rainbow"
+    },
+    {
+      "trait_type": "Duration",
+      "value": "5.0 seconds"
+    },
+    {
+      "trait_type": "Edition",
+      "value": "11 of 12"
+    },
+    {
+      "trait_type": "Collection",
+      "value": "Echo Sigil - Aja's Giggle"
+    }
+  ],
+  "solfeggio_metadata": {
+    "frequency_hz": 1185,
+    "frequency_category": "extended_solfeggio",
+    "harmonic_series": [1185, 2370, 3555, 4740, 5925],
+    "wavelength_cm": 29029.11,
+    "octave_number": 6,
+    "scientific_pitch": "D6 (slightly detuned)",
+    "binaural_pair_hz": null,
+    "resonance_properties": {
+      "primary_effect": "Higher dimensional awareness and perception",
+      "secondary_effect": "Access to akashic records and multidimensional reality",
+      "emotional_impact": "Transcendent, multidimensional, expansive",
+      "physiological_impact": "Activates dormant brain centers, dimensional perception"
+    }
+  },
+  "audio_technical": {
+    "format": "WAV",
+    "sample_rate": 48000,
+    "bit_depth": 24,
+    "channels": 2,
+    "codec": "PCM",
+    "file_size_mb": 2.4
+  },
+  "creator": "Chais Hill - OmniTech1",
+  "collection_phase": "Phase Two - Echo Sigil NFT Protocol",
+  "mint_date": "2025-11-24",
+  "license": "OmniSovereign Public Protocol"
+}

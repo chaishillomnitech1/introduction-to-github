@@ -1,0 +1,76 @@
+{
+  "name": "Echo Sigil #012 - Aja's Giggle at 1296 Hz",
+  "description": "The twelfth and final variant of Aja's Giggle, resonating at 1296 Hz - the frequency of Universal Harmony. This ultimate giggle represents the completion of the cycle, unifying all frequencies into perfect cosmic harmony.",
+  "image": "ipfs://QmEchoSigil012/visual.png",
+  "animation_url": "ipfs://QmEchoSigil012/ajas-giggle-1296hz.wav",
+  "external_url": "https://scrollverse.com/echo-sigil/012",
+  "attributes": [
+    {
+      "trait_type": "Frequency",
+      "value": "1296 Hz"
+    },
+    {
+      "trait_type": "Solfeggio Type",
+      "value": "Extended"
+    },
+    {
+      "trait_type": "Spiritual Property",
+      "value": "Universal Harmony"
+    },
+    {
+      "trait_type": "Element",
+      "value": "Universal Oneness"
+    },
+    {
+      "trait_type": "Chakra Association",
+      "value": "All Chakras (Unity)"
+    },
+    {
+      "trait_type": "Healing Effect",
+      "value": "Complete Harmony, Divine Unity"
+    },
+    {
+      "trait_type": "Color Resonance",
+      "value": "Pure White Light"
+    },
+    {
+      "trait_type": "Duration",
+      "value": "5.0 seconds"
+    },
+    {
+      "trait_type": "Edition",
+      "value": "12 of 12"
+    },
+    {
+      "trait_type": "Collection",
+      "value": "Echo Sigil - Aja's Giggle"
+    }
+  ],
+  "solfeggio_metadata": {
+    "frequency_hz": 1296,
+    "frequency_category": "extended_solfeggio",
+    "harmonic_series": [1296, 2592, 3888, 5184, 6480],
+    "wavelength_cm": 26543.21,
+    "octave_number": 6,
+    "scientific_pitch": "E6 (slightly detuned)",
+    "binaural_pair_hz": null,
+    "resonance_properties": {
+      "primary_effect": "Universal harmony and divine unity",
+      "secondary_effect": "Integration of all frequencies and completion",
+      "emotional_impact": "Harmonious, complete, unified, peaceful",
+      "physiological_impact": "Total system harmony, cellular coherence"
+    }
+  },
+  "audio_technical": {
+    "format": "WAV",
+    "sample_rate": 48000,
+    "bit_depth": 24,
+    "channels": 2,
+    "codec": "PCM",
+    "file_size_mb": 2.4
+  },
+  "creator": "Chais Hill - OmniTech1",
+  "collection_phase": "Phase Two - Echo Sigil NFT Protocol",
+  "mint_date": "2025-11-24",
+  "license": "OmniSovereign Public Protocol"
+}

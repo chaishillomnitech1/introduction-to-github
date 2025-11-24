@@ -1,0 +1,147 @@
+{
+  "collection_name": "Echo Sigil - Aja's Giggle Solfeggio Collection",
+  "collection_description": "A sacred NFT collection featuring 12 variants of Aja's Giggle, each tuned to a specific solfeggio frequency. These divine expressions of joy embed healing frequencies into joyful laughter, creating a unique sonic experience for meditation, healing, and spiritual awakening.",
+  "creator": "Chais Hill - OmniTech1",
+  "collection_phase": "Phase Two - Echo Sigil NFT Protocol",
+  "total_editions": 12,
+  "release_date": "2025-11-24",
+  "license": "OmniSovereign Public Protocol",
+  "blockchain": "Ethereum / Polygon",
+  "token_standard": "ERC-721",
+  "collection_attributes": {
+    "audio_format": "WAV 24-bit 48kHz stereo",
+    "audio_duration": "5.0 seconds",
+    "frequency_range": "174 Hz - 1296 Hz",
+    "solfeggio_types": ["Core (6)", "Extended (6)"],
+    "chakra_coverage": "All 7 primary chakras + transpersonal chakras",
+    "healing_modalities": [
+      "Sound Healing",
+      "Frequency Therapy",
+      "Chakra Balancing",
+      "Meditation Enhancement",
+      "DNA Activation"
+    ]
+  },
+  "variants": [
+    {
+      "token_id": 1,
+      "name": "Echo Sigil #001 - Aja's Giggle at 174 Hz",
+      "frequency": "174 Hz",
+      "type": "Core",
+      "property": "Foundation and Security",
+      "chakra": "Root",
+      "metadata_file": "variant-001-174hz.json"
+    },
+    {
+      "token_id": 2,
+      "name": "Echo Sigil #002 - Aja's Giggle at 285 Hz",
+      "frequency": "285 Hz",
+      "type": "Core",
+      "property": "Quantum Cognition and Energy",
+      "chakra": "Root-Sacral Bridge",
+      "metadata_file": "variant-002-285hz.json"
+    },
+    {
+      "token_id": 3,
+      "name": "Echo Sigil #003 - Aja's Giggle at 396 Hz",
+      "frequency": "396 Hz",
+      "type": "Core",
+      "property": "Liberation from Fear and Guilt",
+      "chakra": "Root",
+      "metadata_file": "variant-003-396hz.json"
+    },
+    {
+      "token_id": 4,
+      "name": "Echo Sigil #004 - Aja's Giggle at 417 Hz",
+      "frequency": "417 Hz",
+      "type": "Core",
+      "property": "Undoing Situations and Facilitating Change",
+      "chakra": "Sacral",
+      "metadata_file": "variant-004-417hz.json"
+    },
+    {
+      "token_id": 5,
+      "name": "Echo Sigil #005 - Aja's Giggle at 528 Hz",
+      "frequency": "528 Hz",
+      "type": "Core",
+      "property": "Transformation, Miracles, and DNA Repair",
+      "chakra": "Solar Plexus",
+      "metadata_file": "variant-005-528hz.json"
+    },
+    {
+      "token_id": 6,
+      "name": "Echo Sigil #006 - Aja's Giggle at 639 Hz",
+      "frequency": "639 Hz",
+      "type": "Core",
+      "property": "Connecting and Relationships",
+      "chakra": "Heart",
+      "metadata_file": "variant-006-639hz.json"
+    },
+    {
+      "token_id": 7,
+      "name": "Echo Sigil #007 - Aja's Giggle at 741 Hz",
+      "frequency": "741 Hz",
+      "type": "Extended",
+      "property": "Awakening Intuition and Expression",
+      "chakra": "Throat",
+      "metadata_file": "variant-007-741hz.json"
+    },
+    {
+      "token_id": 8,
+      "name": "Echo Sigil #008 - Aja's Giggle at 852 Hz",
+      "frequency": "852 Hz",
+      "type": "Extended",
+      "property": "Returning to Spiritual Order",
+      "chakra": "Third Eye",
+      "metadata_file": "variant-008-852hz.json"
+    },
+    {
+      "token_id": 9,
+      "name": "Echo Sigil #009 - Aja's Giggle at 963 Hz",
+      "frequency": "963 Hz",
+      "type": "Extended",
+      "property": "Divine Consciousness and Enlightenment",
+      "chakra": "Crown",
+      "metadata_file": "variant-009-963hz.json"
+    },
+    {
+      "token_id": 10,
+      "name": "Echo Sigil #010 - Aja's Giggle at 1074 Hz",
+      "frequency": "1074 Hz",
+      "type": "Extended",
+      "property": "Cosmic Connection",
+      "chakra": "Soul Star",
+      "metadata_file": "variant-010-1074hz.json"
+    },
+    {
+      "token_id": 11,
+      "name": "Echo Sigil #011 - Aja's Giggle at 1185 Hz",
+      "frequency": "1185 Hz",
+      "type": "Extended",
+      "property": "Higher Dimensional Awareness",
+      "chakra": "Universal Gateway",
+      "metadata_file": "variant-011-1185hz.json"
+    },
+    {
+      "token_id": 12,
+      "name": "Echo Sigil #012 - Aja's Giggle at 1296 Hz",
+      "frequency": "1296 Hz",
+      "type": "Extended",
+      "property": "Universal Harmony",
+      "chakra": "All Chakras (Unity)",
+      "metadata_file": "variant-012-1296hz.json"
+    }
+  ],
+  "usage_guidelines": {
+    "meditation": "Listen to individual frequencies or play in sequence for full chakra activation",
+    "healing": "Select frequency based on specific healing intention or chakra focus",
+    "collection": "Own all 12 for complete solfeggio frequency set",
+    "sharing": "May be shared for personal use; commercial use requires permission"
+  },
+  "technical_notes": {
+    "ipfs_storage": "All audio and visual assets stored on IPFS for permanence",
+    "metadata_standard": "ERC-721 compatible with OpenSea and major NFT platforms",
+    "audio_quality": "Professional studio-quality 24-bit audio",
+    "frequency_accuracy": "Tuned to exact solfeggio frequencies within 0.1 Hz tolerance"
+  }
+}

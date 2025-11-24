@@ -1,0 +1,76 @@
+{
+  "name": "Echo Sigil #002 - Aja's Giggle at 285 Hz",
+  "description": "The second variant of Aja's Giggle, resonating at 285 Hz - the frequency of Quantum Cognition and Energy. This joyful vibration enhances cellular regeneration and mental clarity.",
+  "image": "ipfs://QmEchoSigil002/visual.png",
+  "animation_url": "ipfs://QmEchoSigil002/ajas-giggle-285hz.wav",
+  "external_url": "https://scrollverse.com/echo-sigil/002",
+  "attributes": [
+    {
+      "trait_type": "Frequency",
+      "value": "285 Hz"
+    },
+    {
+      "trait_type": "Solfeggio Type",
+      "value": "Core"
+    },
+    {
+      "trait_type": "Spiritual Property",
+      "value": "Quantum Cognition and Energy"
+    },
+    {
+      "trait_type": "Element",
+      "value": "Ether"
+    },
+    {
+      "trait_type": "Chakra Association",
+      "value": "Root-Sacral Bridge"
+    },
+    {
+      "trait_type": "Healing Effect",
+      "value": "Tissue Regeneration, Memory Enhancement"
+    },
+    {
+      "trait_type": "Color Resonance",
+      "value": "Crimson"
+    },
+    {
+      "trait_type": "Duration",
+      "value": "5.0 seconds"
+    },
+    {
+      "trait_type": "Edition",
+      "value": "2 of 12"
+    },
+    {
+      "trait_type": "Collection",
+      "value": "Echo Sigil - Aja's Giggle"
+    }
+  ],
+  "solfeggio_metadata": {
+    "frequency_hz": 285,
+    "frequency_category": "core_solfeggio",
+    "harmonic_series": [285, 570, 855, 1140, 1425],
+    "wavelength_cm": 120701.75,
+    "octave_number": 3,
+    "scientific_pitch": "C#3 (slightly detuned)",
+    "binaural_pair_hz": null,
+    "resonance_properties": {
+      "primary_effect": "Quantum cognition and cellular energy",
+      "secondary_effect": "Tissue regeneration and restoration",
+      "emotional_impact": "Energizing, clarifying, renewing",
+      "physiological_impact": "Accelerates healing, enhances cognition"
+    }
+  },
+  "audio_technical": {
+    "format": "WAV",
+    "sample_rate": 48000,
+    "bit_depth": 24,
+    "channels": 2,
+    "codec": "PCM",
+    "file_size_mb": 2.4
+  },
+  "creator": "Chais Hill - OmniTech1",
+  "collection_phase": "Phase Two - Echo Sigil NFT Protocol",
+  "mint_date": "2025-11-24",
+  "license": "OmniSovereign Public Protocol"
+}

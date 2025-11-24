@@ -1,0 +1,76 @@
+{
+  "name": "Echo Sigil #007 - Aja's Giggle at 741 Hz",
+  "description": "The seventh variant of Aja's Giggle, resonating at 741 Hz - the frequency of Awakening Intuition and Expression. This insightful giggle opens the channel to inner wisdom and authentic expression.",
+  "image": "ipfs://QmEchoSigil007/visual.png",
+  "animation_url": "ipfs://QmEchoSigil007/ajas-giggle-741hz.wav",
+  "external_url": "https://scrollverse.com/echo-sigil/007",
+  "attributes": [
+    {
+      "trait_type": "Frequency",
+      "value": "741 Hz"
+    },
+    {
+      "trait_type": "Solfeggio Type",
+      "value": "Extended"
+    },
+    {
+      "trait_type": "Spiritual Property",
+      "value": "Awakening Intuition and Expression"
+    },
+    {
+      "trait_type": "Element",
+      "value": "Sound"
+    },
+    {
+      "trait_type": "Chakra Association",
+      "value": "Throat"
+    },
+    {
+      "trait_type": "Healing Effect",
+      "value": "Intuition Awakening, Self-Expression"
+    },
+    {
+      "trait_type": "Color Resonance",
+      "value": "Sky Blue"
+    },
+    {
+      "trait_type": "Duration",
+      "value": "5.0 seconds"
+    },
+    {
+      "trait_type": "Edition",
+      "value": "7 of 12"
+    },
+    {
+      "trait_type": "Collection",
+      "value": "Echo Sigil - Aja's Giggle"
+    }
+  ],
+  "solfeggio_metadata": {
+    "frequency_hz": 741,
+    "frequency_category": "extended_solfeggio",
+    "harmonic_series": [741, 1482, 2223, 2964, 3705],
+    "wavelength_cm": 46424.97,
+    "octave_number": 5,
+    "scientific_pitch": "F#5 (slightly detuned)",
+    "binaural_pair_hz": null,
+    "resonance_properties": {
+      "primary_effect": "Intuition awakening and authentic expression",
+      "secondary_effect": "Purification and problem-solving",
+      "emotional_impact": "Clarifying, expressive, intuitive",
+      "physiological_impact": "Activates pineal gland, enhances clarity"
+    }
+  },
+  "audio_technical": {
+    "format": "WAV",
+    "sample_rate": 48000,
+    "bit_depth": 24,
+    "channels": 2,
+    "codec": "PCM",
+    "file_size_mb": 2.4
+  },
+  "creator": "Chais Hill - OmniTech1",
+  "collection_phase": "Phase Two - Echo Sigil NFT Protocol",
+  "mint_date": "2025-11-24",
+  "license": "OmniSovereign Public Protocol"
+}

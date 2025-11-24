@@ -1,0 +1,76 @@
+{
+  "name": "Echo Sigil #006 - Aja's Giggle at 639 Hz",
+  "description": "The sixth variant of Aja's Giggle, resonating at 639 Hz - the frequency of Connecting and Relationships. This harmonious giggle enhances communication, understanding, and heart connections.",
+  "image": "ipfs://QmEchoSigil006/visual.png",
+  "animation_url": "ipfs://QmEchoSigil006/ajas-giggle-639hz.wav",
+  "external_url": "https://scrollverse.com/echo-sigil/006",
+  "attributes": [
+    {
+      "trait_type": "Frequency",
+      "value": "639 Hz"
+    },
+    {
+      "trait_type": "Solfeggio Type",
+      "value": "Core"
+    },
+    {
+      "trait_type": "Spiritual Property",
+      "value": "Connecting and Relationships"
+    },
+    {
+      "trait_type": "Element",
+      "value": "Air"
+    },
+    {
+      "trait_type": "Chakra Association",
+      "value": "Heart"
+    },
+    {
+      "trait_type": "Healing Effect",
+      "value": "Relationship Harmony, Communication"
+    },
+    {
+      "trait_type": "Color Resonance",
+      "value": "Emerald Green"
+    },
+    {
+      "trait_type": "Duration",
+      "value": "5.0 seconds"
+    },
+    {
+      "trait_type": "Edition",
+      "value": "6 of 12"
+    },
+    {
+      "trait_type": "Collection",
+      "value": "Echo Sigil - Aja's Giggle"
+    }
+  ],
+  "solfeggio_metadata": {
+    "frequency_hz": 639,
+    "frequency_category": "core_solfeggio",
+    "harmonic_series": [639, 1278, 1917, 2556, 3195],
+    "wavelength_cm": 53846.32,
+    "octave_number": 5,
+    "scientific_pitch": "D#5 (slightly detuned)",
+    "binaural_pair_hz": null,
+    "resonance_properties": {
+      "primary_effect": "Connection and relationship harmony",
+      "secondary_effect": "Enhanced communication and understanding",
+      "emotional_impact": "Harmonious, connecting, compassionate",
+      "physiological_impact": "Balances heart rhythm, enhances empathy"
+    }
+  },
+  "audio_technical": {
+    "format": "WAV",
+    "sample_rate": 48000,
+    "bit_depth": 24,
+    "channels": 2,
+    "codec": "PCM",
+    "file_size_mb": 2.4
+  },
+  "creator": "Chais Hill - OmniTech1",
+  "collection_phase": "Phase Two - Echo Sigil NFT Protocol",
+  "mint_date": "2025-11-24",
+  "license": "OmniSovereign Public Protocol"
+}

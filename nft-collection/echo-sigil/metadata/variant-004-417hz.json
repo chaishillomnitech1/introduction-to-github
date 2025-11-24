@@ -1,0 +1,76 @@
+{
+  "name": "Echo Sigil #004 - Aja's Giggle at 417 Hz",
+  "description": "The fourth variant of Aja's Giggle, resonating at 417 Hz - the frequency of Undoing Situations and Facilitating Change. This transformative giggle clears energetic blockages and enables positive change.",
+  "image": "ipfs://QmEchoSigil004/visual.png",
+  "animation_url": "ipfs://QmEchoSigil004/ajas-giggle-417hz.wav",
+  "external_url": "https://scrollverse.com/echo-sigil/004",
+  "attributes": [
+    {
+      "trait_type": "Frequency",
+      "value": "417 Hz"
+    },
+    {
+      "trait_type": "Solfeggio Type",
+      "value": "Core"
+    },
+    {
+      "trait_type": "Spiritual Property",
+      "value": "Undoing Situations and Facilitating Change"
+    },
+    {
+      "trait_type": "Element",
+      "value": "Water"
+    },
+    {
+      "trait_type": "Chakra Association",
+      "value": "Sacral"
+    },
+    {
+      "trait_type": "Healing Effect",
+      "value": "Energy Clearing, Change Catalyst"
+    },
+    {
+      "trait_type": "Color Resonance",
+      "value": "Orange"
+    },
+    {
+      "trait_type": "Duration",
+      "value": "5.0 seconds"
+    },
+    {
+      "trait_type": "Edition",
+      "value": "4 of 12"
+    },
+    {
+      "trait_type": "Collection",
+      "value": "Echo Sigil - Aja's Giggle"
+    }
+  ],
+  "solfeggio_metadata": {
+    "frequency_hz": 417,
+    "frequency_category": "core_solfeggio",
+    "harmonic_series": [417, 834, 1251, 1668, 2085],
+    "wavelength_cm": 82553.96,
+    "octave_number": 4,
+    "scientific_pitch": "G#4 (slightly detuned)",
+    "binaural_pair_hz": null,
+    "resonance_properties": {
+      "primary_effect": "Undoing situations and facilitating change",
+      "secondary_effect": "Clearing negative energy and trauma",
+      "emotional_impact": "Transformative, flowing, releasing",
+      "physiological_impact": "Enhances cellular change, removes toxins"
+    }
+  },
+  "audio_technical": {
+    "format": "WAV",
+    "sample_rate": 48000,
+    "bit_depth": 24,
+    "channels": 2,
+    "codec": "PCM",
+    "file_size_mb": 2.4
+  },
+  "creator": "Chais Hill - OmniTech1",
+  "collection_phase": "Phase Two - Echo Sigil NFT Protocol",
+  "mint_date": "2025-11-24",
+  "license": "OmniSovereign Public Protocol"
+}
