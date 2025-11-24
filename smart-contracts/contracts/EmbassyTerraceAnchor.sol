@@ -79,9 +79,12 @@ contract EmbassyTerraceAnchor is ERC721, ERC721URIStorage, Ownable {
     function strengthenAnchor(uint256 tokenId, uint256 additionalStrength) public onlyOwner {
         require(_ownerOf(tokenId) != address(0), "Token does not exist");
         
-        physicalAnchors[tokenId].realWorldAnchorStrength += additionalStrength;
+        uint256 newStrength = physicalAnchors[tokenId].realWorldAnchorStrength + additionalStrength;
+        require(newStrength <= 1000, "Anchor strength cannot exceed maximum (1000)");
         
-        emit AnchorStrengthened(tokenId, physicalAnchors[tokenId].realWorldAnchorStrength);
+        physicalAnchors[tokenId].realWorldAnchorStrength = newStrength;
+        
+        emit AnchorStrengthened(tokenId, newStrength);
     }
 
     /**

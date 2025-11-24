@@ -49,7 +49,7 @@ quantumRouter.post('/activate', authenticateToken, async (req, res) => {
     });
   }
 
-  const sessionId = `broadcast-${Date.now()}`;
+  const sessionId = `broadcast-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
   const session = {
     id: sessionId,
     frequency,
@@ -62,9 +62,10 @@ quantumRouter.post('/activate', authenticateToken, async (req, res) => {
 
   broadcastSessions.set(sessionId, session);
 
-  // Amplify global state
+  // Amplify global state (ensure it only increases, never decreases)
   globalQuantumState.networkOverrideLevel = Math.min(100, 
-    globalQuantumState.networkOverrideLevel + (intensity / 100)
+    Math.max(globalQuantumState.networkOverrideLevel, 
+      globalQuantumState.networkOverrideLevel + (intensity / 100))
   );
   globalQuantumState.iamCodeStrength += intensity * 100;
 

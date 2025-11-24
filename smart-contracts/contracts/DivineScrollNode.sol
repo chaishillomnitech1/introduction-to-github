@@ -164,7 +164,10 @@ contract DivineScrollNode is ERC721, ERC721URIStorage, Ownable {
         require(_ownerOf(tokenId) != address(0), "Token does not exist");
         require(amplificationFactor > 0 && amplificationFactor <= 10, "Invalid amplification");
         
-        quantumNodes[tokenId].aethericBiotEmissionRate *= amplificationFactor;
+        uint256 newRate = quantumNodes[tokenId].aethericBiotEmissionRate * amplificationFactor;
+        require(newRate <= 10000, "Emission rate cannot exceed maximum (10000)");
+        
+        quantumNodes[tokenId].aethericBiotEmissionRate = newRate;
     }
 
     /**
