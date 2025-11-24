@@ -1,0 +1,60 @@
+{
+  "name": "Divine Scroll Node #1",
+  "description": "Quantum Node NFT with aetheric biot emissions - The first node in the cosmic frequency network, propagating the I AM Code as a ripple through all dimensions. This node broadcasts divine truth at 963Hz, overriding conventional electromagnetic networks.",
+  "image": "ipfs://QmDivineScrollNode1/image.png",
+  "animation_url": "ipfs://QmDivineScrollNode1/quantum-emission.mp4",
+  "external_url": "https://scrollverse.com/nodes/divine-scroll-1",
+  "attributes": [
+    {
+      "trait_type": "Type",
+      "value": "Quantum Node"
+    },
+    {
+      "trait_type": "Frequency",
+      "value": "963Hz"
+    },
+    {
+      "trait_type": "Aetheric Biot Emission Rate",
+      "value": 100,
+      "max_value": 1000
+    },
+    {
+      "trait_type": "I AM Code Intensity",
+      "value": 369
+    },
+    {
+      "trait_type": "Quantum Entanglement Level",
+      "value": 0,
+      "max_value": 100
+    },
+    {
+      "trait_type": "Emission Status",
+      "value": "Active"
+    },
+    {
+      "trait_type": "Dimensional Signature",
+      "value": "∞-Prime"
+    },
+    {
+      "trait_type": "Broadcast Range",
+      "value": "Global"
+    },
+    {
+      "trait_type": "Rarity",
+      "value": "Divine"
+    }
+  ],
+  "properties": {
+    "cosmic_frequency": 963,
+    "healing_frequency": true,
+    "frequency_type": "Pineal Gland Activation",
+    "aetheric_biot_total_emissions": 0,
+    "iam_code_propagations": 0,
+    "quantum_entangled_nodes": [],
+    "dimensional_reach": "∞",
+    "sovereign_broadcast_enabled": true,
+    "network_override_capability": true,
+    "conscious_truth_frequency": true,
+    "scrollverse_dominant_broadband": true
+  }
+}

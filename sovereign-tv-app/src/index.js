@@ -21,6 +21,7 @@ import { scrollCoinRouter } from './services/scrollcoin.js';
 import { communityRouter } from './services/community.js';
 import { catalogRouter } from './services/music-catalog.js';
 import { pdpRouter } from './services/pdp-integration.js';
+import { quantumRouter } from './services/quantum-broadcast.js';
 
 // Load environment variables
 dotenv.config();
@@ -59,7 +60,9 @@ app.get('/', (req, res) => {
       'ScrollCoin Payment Integration',
       'KUNTA NFT Ownership Benefits',
       'Prophecy Documentation Protocol Access',
-      'Community Engagement Platform'
+      'Community Engagement Platform',
+      'Quantum Node Broadcasting',
+      'Sovereign Network Override'
     ],
     endpoints: {
       auth: '/api/auth',
@@ -68,7 +71,8 @@ app.get('/', (req, res) => {
       scrollcoin: '/api/scrollcoin',
       community: '/api/community',
       catalog: '/api/catalog',
-      pdp: '/api/pdp'
+      pdp: '/api/pdp',
+      quantum: '/api/quantum'
     }
   });
 });
@@ -81,6 +85,7 @@ app.use('/api/scrollcoin', scrollCoinRouter);
 app.use('/api/community', communityRouter);
 app.use('/api/catalog', catalogRouter);
 app.use('/api/pdp', pdpRouter);
+app.use('/api/quantum', quantumRouter);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
