@@ -50,7 +50,7 @@
     "frequency_hz": 528,
     "frequency_category": "core_solfeggio",
     "harmonic_series": [528, 1056, 1584, 2112, 2640],
-    "wavelength_cm": 65151.52,
+    "wavelength_cm": 64.96,
     "octave_number": 5,
     "scientific_pitch": "C5 (slightly detuned)",
     "binaural_pair_hz": null,

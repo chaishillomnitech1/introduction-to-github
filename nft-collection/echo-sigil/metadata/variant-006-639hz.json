@@ -50,7 +50,7 @@
     "frequency_hz": 639,
     "frequency_category": "core_solfeggio",
     "harmonic_series": [639, 1278, 1917, 2556, 3195],
-    "wavelength_cm": 53846.32,
+    "wavelength_cm": 53.68,
     "octave_number": 5,
     "scientific_pitch": "D#5 (slightly detuned)",
     "binaural_pair_hz": null,

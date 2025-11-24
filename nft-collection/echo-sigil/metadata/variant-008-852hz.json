@@ -50,7 +50,7 @@
     "frequency_hz": 852,
     "frequency_category": "extended_solfeggio",
     "harmonic_series": [852, 1704, 2556, 3408, 4260],
-    "wavelength_cm": 40376.76,
+    "wavelength_cm": 40.26,
     "octave_number": 5,
     "scientific_pitch": "G#5 (slightly detuned)",
     "binaural_pair_hz": null,

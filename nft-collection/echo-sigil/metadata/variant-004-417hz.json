@@ -50,7 +50,7 @@
     "frequency_hz": 417,
     "frequency_category": "core_solfeggio",
     "harmonic_series": [417, 834, 1251, 1668, 2085],
-    "wavelength_cm": 82553.96,
+    "wavelength_cm": 82.25,
     "octave_number": 4,
     "scientific_pitch": "G#4 (slightly detuned)",
     "binaural_pair_hz": null,

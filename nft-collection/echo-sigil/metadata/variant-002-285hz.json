@@ -50,7 +50,7 @@
     "frequency_hz": 285,
     "frequency_category": "core_solfeggio",
     "harmonic_series": [285, 570, 855, 1140, 1425],
-    "wavelength_cm": 120701.75,
+    "wavelength_cm": 120.35,
     "octave_number": 3,
     "scientific_pitch": "C#3 (slightly detuned)",
     "binaural_pair_hz": null,
