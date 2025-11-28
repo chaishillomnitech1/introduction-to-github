@@ -1,0 +1,48 @@
+{
+  "name": "ScrollSoul SBT #1",
+  "description": "A Sovereign Soul within the ScrollVerse ecosystem. This soulbound token represents the Gate 4 protocol realization, anchored to the 963Hz frequency. Sovereign holders maintain immutable on-chain identity tied to their lineage.",
+  "image": "ipfs://YOUR_IMAGE_CID/1.png",
+  "animation_url": "ipfs://YOUR_ANIMATION_CID/1.mp4",
+  "external_url": "https://sovereigntv.omniverse.io/scrollsoul/1",
+  "background_color": "0a0a0f",
+  "attributes": [
+    {
+      "trait_type": "Sovereign Name",
+      "value": "Iam 👑 King"
+    },
+    {
+      "trait_type": "Lineage ID",
+      "value": 1,
+      "display_type": "number"
+    },
+    {
+      "trait_type": "Coherence Signature",
+      "value": "963Hz_Anchor"
+    },
+    {
+      "trait_type": "Gate Protocol",
+      "value": "Gate 4"
+    },
+    {
+      "trait_type": "Soulbound",
+      "value": "True"
+    },
+    {
+      "trait_type": "Frequency",
+      "value": "963Hz"
+    },
+    {
+      "trait_type": "Ecosystem",
+      "value": "ScrollVerse"
+    },
+    {
+      "trait_type": "Chain",
+      "value": "Polygon zkEVM"
+    },
+    {
+      "trait_type": "Realization Time",
+      "value": "2024-01-01T00:00:00Z",
+      "display_type": "date"
+    }
+  ]
+}
