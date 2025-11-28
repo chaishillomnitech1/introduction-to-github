@@ -55,6 +55,18 @@ module.exports = {
       url: process.env.MUMBAI_RPC || "https://rpc-mumbai.maticvigil.com",
       chainId: 80001,
       accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : []
+    },
+    
+    // Polygon zkEVM Networks (for ScrollSoulSBT deployment)
+    polygonZkEvmTestnet: {
+      url: process.env.POLYGON_ZKEVM_TESTNET_RPC || "https://rpc.cardona.zkevm-rpc.com",
+      chainId: 2442,
+      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : []
+    },
+    polygonZkEvmMainnet: {
+      url: process.env.POLYGON_ZKEVM_MAINNET_RPC || "https://zkevm-rpc.com",
+      chainId: 1101,
+      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : []
     }
   },
   
@@ -65,7 +77,9 @@ module.exports = {
       polygon: process.env.POLYGONSCAN_API_KEY || "",
       polygonMumbai: process.env.POLYGONSCAN_API_KEY || "",
       scrollSepolia: process.env.SCROLLSCAN_API_KEY || "",
-      scrollMainnet: process.env.SCROLLSCAN_API_KEY || ""
+      scrollMainnet: process.env.SCROLLSCAN_API_KEY || "",
+      polygonZkEvmTestnet: process.env.POLYGONSCAN_ZKEVM_API_KEY || "",
+      polygonZkEvmMainnet: process.env.POLYGONSCAN_ZKEVM_API_KEY || ""
     },
     customChains: [
       {
@@ -82,6 +96,22 @@ module.exports = {
         urls: {
           apiURL: "https://api.scrollscan.com/api",
           browserURL: "https://scrollscan.com"
+        }
+      },
+      {
+        network: "polygonZkEvmTestnet",
+        chainId: 2442,
+        urls: {
+          apiURL: "https://api-cardona-zkevm.polygonscan.com/api",
+          browserURL: "https://cardona-zkevm.polygonscan.com"
+        }
+      },
+      {
+        network: "polygonZkEvmMainnet",
+        chainId: 1101,
+        urls: {
+          apiURL: "https://api-zkevm.polygonscan.com/api",
+          browserURL: "https://zkevm.polygonscan.com"
         }
       }
     ]
