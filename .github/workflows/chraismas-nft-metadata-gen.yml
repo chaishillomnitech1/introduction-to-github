@@ -24,6 +24,8 @@ on:
 jobs:
   generate-metadata:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Need write for commit and push
     
     steps:
       - name: Checkout repository
