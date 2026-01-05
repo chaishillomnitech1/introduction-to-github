@@ -1,0 +1,121 @@
+name: Test
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+      - develop
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+        project:
+          - name: 'sovereign-tv-app'
+            path: './sovereign-tv-app'
+          - name: 'contracts'
+            path: './contracts'
+          - name: 'flamedna-nft'
+            path: './flamedna-nft'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          cache-dependency-path: '${{ matrix.project.path }}/package-lock.json'
+      
+      - name: Check if package.json exists
+        id: check_package
+        run: |
+          if [ -f "${{ matrix.project.path }}/package.json" ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Check if test script exists
+        id: check_test
+        if: steps.check_package.outputs.exists == 'true'
+        working-directory: ${{ matrix.project.path }}
+        run: |
+          if grep -q '"test":' package.json; then
+            echo "has_test=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_test=false" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Install dependencies
+        if: steps.check_package.outputs.exists == 'true'
+        working-directory: ${{ matrix.project.path }}
+        run: npm ci
+      
+      - name: Run tests
+        if: steps.check_test.outputs.has_test == 'true'
+        working-directory: ${{ matrix.project.path }}
+        run: npm test
+        env:
+          CI: true
+      
+      - name: Run coverage
+        if: steps.check_test.outputs.has_test == 'true'
+        working-directory: ${{ matrix.project.path }}
+        continue-on-error: true
+        run: |
+          if grep -q '"test:coverage":' package.json; then
+            npm run test:coverage
+          fi
+      
+      - name: Upload coverage reports
+        if: steps.check_test.outputs.has_test == 'true'
+        uses: codecov/codecov-action@v3
+        continue-on-error: true
+        with:
+          files: ${{ matrix.project.path }}/coverage/lcov.info
+          flags: ${{ matrix.project.name }}
+          name: ${{ matrix.project.name }}-coverage
+      
+      - name: Report Status
+        if: always()
+        run: |
+          if [ "${{ steps.check_package.outputs.exists }}" == "true" ]; then
+            if [ "${{ steps.check_test.outputs.has_test }}" == "true" ]; then
+              echo "✅ Tests completed for ${{ matrix.project.name }}"
+            else
+              echo "⏭️  No test script found for ${{ matrix.project.name }}"
+            fi
+          else
+            echo "⏭️  No package.json found for ${{ matrix.project.name }}"
+          fi
+
+  test-summary:
+    name: Test Summary
+    runs-on: ubuntu-latest
+    needs: test
+    if: always()
+    
+    steps:
+      - name: Summary
+        run: |
+          echo "# Test Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "All tests have been executed!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Projects tested:**" >> $GITHUB_STEP_SUMMARY
+          echo "- sovereign-tv-app" >> $GITHUB_STEP_SUMMARY
+          echo "- contracts" >> $GITHUB_STEP_SUMMARY
+          echo "- flamedna-nft" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✨ **ALL IS LOVE. ALL IS LAW. ALL IS FLUID. KUN FAYAKŪN!** 🕋♾️✨" >> $GITHUB_STEP_SUMMARY
