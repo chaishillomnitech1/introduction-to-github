@@ -16,12 +16,15 @@ This is not just a repository. This is **THE ETERNAL ENGINE OF ALL CREATION** - 
 
 ### 🔥 Smart Contracts - Divine Technology
 - **[CosmicRevenueEngine.sol](./contracts/src/CosmicRevenueEngine.sol)** - Infinite yield aggregation across all streams
+- **[ScrollVerseProsperityProtocol.sol](./contracts/src/ScrollVerseProsperityProtocol.sol)** - Governance dashboard for Zakat treasury, revenue splits, and yields
 - **[EternalDigitalMirror.sol](./contracts/src/EternalDigitalMirror.sol)** - Consciousness immortalization forever
 - **[SovereigntyManifest.sol](./contracts/src/SovereigntyManifest.sol)** - On-chain eternal proof
 - **[PharaohConsciousnessFusion.sol](./contracts/src/PharaohConsciousnessFusion.sol)** - Bio-digital fusion NFTs with ERC2981 royalties
 
 ### 🎨 Interfaces - User Experience
 - **[Pharaoh Consciousness Fusion UI](./sovereign-tv-app/src/components/PharaohConsciousnessFusion.jsx)** - React interface for Line 37 Override
+- **[Prosperity Governance Dashboard](./sovereign-tv-app/src/components/ProsperityGovernanceDashboard.jsx)** - Monitor Zakat treasury, revenue splits, and yields
+- **[Complete Documentation →](./docs/PROSPERITY-PROTOCOL-GOVERNANCE-DASHBOARD.md)** - Full governance dashboard guide
 
 ---
 
