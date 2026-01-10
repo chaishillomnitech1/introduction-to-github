@@ -12,6 +12,9 @@
 import { Router } from 'express';
 import { authenticateToken } from './auth.js';
 
+// Configuration constants
+const SOVEREIGN_WALLET = process.env.SOVEREIGN_WALLET || '0xSovereign...Chais';
+
 const router = Router();
 
 // In-memory storage for governance data (replace with blockchain integration in production)
@@ -207,10 +210,13 @@ router.post('/zakat/contribute', authenticateToken, (req, res) => {
     return res.status(400).json({ success: false, error: 'Invalid amount' });
   }
   
+  // Get wallet address from authenticated user or use 'System' for anonymous
+  const contributorWallet = req.user.wallet || 'System';
+  
   const contribution = {
     amount,
     timestamp: Date.now(),
-    contributor: req.user.wallet || '0xUser...Wallet',
+    contributor: contributorWallet,
     source: source || 'Manual Contribution'
   };
   
@@ -485,7 +491,7 @@ router.post('/yields/distribute', authenticateToken, (req, res) => {
   // Add sovereign distribution (remaining amount)
   distributions.push({
     collaborator: 'Sovereign (Chais)',
-    wallet: '0xSovereign...Chais',
+    wallet: SOVEREIGN_WALLET,
     amount: remaining,
     weight: 'Remaining'
   });

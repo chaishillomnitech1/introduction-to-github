@@ -146,25 +146,24 @@ contract ScrollVerseProsperityProtocol is AccessControl, ReentrancyGuard {
     
     /**
      * @notice Record a Zakat contribution to the treasury
-     * @param amount Amount contributed
+     * @dev Accepts ETH via msg.value and records the contribution
      * @param source Description of the contribution source
      */
-    function contributeToZakat(uint256 amount, string calldata source) external payable nonReentrant {
-        require(msg.value == amount, "Amount mismatch");
-        require(amount > 0, "Amount must be positive");
+    function contributeToZakat(string calldata source) external payable nonReentrant {
+        require(msg.value > 0, "Amount must be positive");
         
-        zakatTreasuryBalance += amount;
-        totalRevenueCollected += amount;
+        zakatTreasuryBalance += msg.value;
+        totalRevenueCollected += msg.value;
         
         zakatHistory.push(ZakatContribution({
-            amount: amount,
+            amount: msg.value,
             timestamp: block.timestamp,
             contributor: msg.sender,
             source: source
         }));
         
-        emit ZakatContributed(msg.sender, amount, source, block.timestamp);
-        _logAudit(msg.sender, "ZAKAT_CONTRIBUTED", string(abi.encodePacked("Amount: ", _uint2str(amount), " Source: ", source)));
+        emit ZakatContributed(msg.sender, msg.value, source, block.timestamp);
+        _logAudit(msg.sender, "ZAKAT_CONTRIBUTED", string(abi.encodePacked("Amount: ", _uint2str(msg.value), " Source: ", source)));
     }
     
     /**

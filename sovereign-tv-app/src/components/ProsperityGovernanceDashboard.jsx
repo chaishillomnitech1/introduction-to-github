@@ -32,9 +32,17 @@ const ProsperityGovernanceDashboard = () => {
   const fetchOverview = async () => {
     try {
       setLoading(true);
+      const token = localStorage.getItem('token');
+      
+      if (!token) {
+        setError('Authentication required. Please log in.');
+        setLoading(false);
+        return;
+      }
+      
       const response = await fetch('/api/prosperity-governance/overview', {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
+          'Authorization': `Bearer ${token}`
         }
       });
       
@@ -51,9 +59,15 @@ const ProsperityGovernanceDashboard = () => {
 
   const fetchZakatTreasury = async () => {
     try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        setError('Authentication required');
+        return;
+      }
+      
       const response = await fetch('/api/prosperity-governance/zakat/treasury', {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
+          'Authorization': `Bearer ${token}`
         }
       });
       
@@ -68,9 +82,15 @@ const ProsperityGovernanceDashboard = () => {
 
   const fetchCollaborators = async () => {
     try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        setError('Authentication required');
+        return;
+      }
+      
       const response = await fetch('/api/prosperity-governance/collaborators', {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
+          'Authorization': `Bearer ${token}`
         }
       });
       
@@ -85,9 +105,15 @@ const ProsperityGovernanceDashboard = () => {
 
   const fetchYields = async () => {
     try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        setError('Authentication required');
+        return;
+      }
+      
       const response = await fetch('/api/prosperity-governance/yields', {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
+          'Authorization': `Bearer ${token}`
         }
       });
       
@@ -102,9 +128,15 @@ const ProsperityGovernanceDashboard = () => {
 
   const fetchAuditLogs = async () => {
     try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        setError('Authentication required');
+        return;
+      }
+      
       const response = await fetch('/api/prosperity-governance/audit?limit=50', {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
+          'Authorization': `Bearer ${token}`
         }
       });
       
@@ -119,9 +151,15 @@ const ProsperityGovernanceDashboard = () => {
 
   const fetchPermissions = async () => {
     try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        setError('Authentication required');
+        return;
+      }
+      
       const response = await fetch('/api/prosperity-governance/permissions', {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
+          'Authorization': `Bearer ${token}`
         }
       });
       
