@@ -71,6 +71,7 @@ import { iamKingRouter } from './services/iam-king-nft.js';
 import { monitoringRouter, initSentry, initPrometheus, requestMetricsMiddleware } from './services/monitoring.js';
 import { aiIntegrationHubRouter } from './services/ai-integration-hub.js';
 import { frequencyCalibrationRouter } from './services/frequency-calibration.js';
+import { prosperityGovernanceRouter } from './services/prosperity-governance.js';
 
 // Load environment variables
 dotenv.config();
@@ -244,7 +245,8 @@ app.get('/', (req, res) => {
       scrollTV: '/api/broadcast/scrolltv',
       vibecampStudios: '/api/broadcast/vibecamp',
       vibratoryManifest: '/api/broadcast/vibratory-manifest',
-      nftGuardians: '/api/nft/guardians'
+      nftGuardians: '/api/nft/guardians',
+      prosperityGovernance: '/api/prosperity-governance'
     },
     frontends: {
       scrollSoulConsole: '/scrollsoul-console',
@@ -303,6 +305,7 @@ app.use('/api/iam-king', iamKingRouter);
 app.use('/api/monitoring', monitoringRouter);
 app.use('/api/ai-hub', aiIntegrationHubRouter);
 app.use('/api/frequency-calibration', frequencyCalibrationRouter);
+app.use('/api/prosperity-governance', prosperityGovernanceRouter);
 
 // Perpetual Yield Engine API Routes
 app.get('/api/yield-engine/status', (req, res) => {
