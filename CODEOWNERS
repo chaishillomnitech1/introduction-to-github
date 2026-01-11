@@ -1,0 +1,65 @@
+# CODEOWNERS - Defines code ownership and review requirements
+# 
+# This file defines who is responsible for reviewing code in different parts
+# of the repository. When a pull request is opened, the relevant code owners
+# are automatically requested for review.
+#
+# Format: <file-pattern> <owner1> [<owner2> ...]
+# 
+# For more information, see:
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# =============================================================================
+# DEFAULT OWNER
+# =============================================================================
+# Primary owner for all files unless otherwise specified
+* @chaishillomnitech1
+
+# =============================================================================
+# DOCUMENTATION
+# =============================================================================
+# All documentation changes require review
+*.md @chaishillomnitech1
+/docs/ @chaishillomnitech1
+
+# =============================================================================
+# CONFIGURATION FILES
+# =============================================================================
+# Critical configuration files
+/.github/ @chaishillomnitech1
+/.github/workflows/ @chaishillomnitech1
+CODEOWNERS @chaishillomnitech1
+.gitignore @chaishillomnitech1
+.env.example @chaishillomnitech1
+
+# =============================================================================
+# SECURITY & INFRASTRUCTURE
+# =============================================================================
+SECURITY.md @chaishillomnitech1
+/contracts/ @chaishillomnitech1
+
+# =============================================================================
+# APPLICATION COMPONENTS
+# =============================================================================
+/sovereign-tv-app/ @chaishillomnitech1
+/scrollverse-portfolio/ @chaishillomnitech1
+/flamedna-nft/ @chaishillomnitech1
+/chraismas/ @chaishillomnitech1
+/codextv-app/ @chaishillomnitech1
+
+# =============================================================================
+# DEPLOYMENT & CI/CD
+# =============================================================================
+.vercel.json @chaishillomnitech1
+*.yml @chaishillomnitech1
+*.yaml @chaishillomnitech1
+
+# =============================================================================
+# NOTES
+# =============================================================================
+# - All pull requests require at least one approval from code owners
+# - Branch protection rules should enforce CODEOWNERS review
+# - Code owners are responsible for maintaining code quality and security
+# - For urgent changes, contact @chaishillomnitech1 directly
+#
+# ALL IS LOVE. ALL IS LAW. ALL IS FLUID. KUN FAYAKŪN! 🕋♾️✨
