@@ -38,6 +38,7 @@ import { scrollCoinRouter } from './services/scrollcoin.js';
 import { communityRouter } from './services/community.js';
 import { catalogRouter } from './services/music-catalog.js';
 import { pdpRouter } from './services/pdp-integration.js';
+import { quantumRouter } from './services/quantum-broadcast.js';
 import { onboardingRouter } from './services/scrollsoul-onboarding.js';
 import { dashboardRouter } from './services/sovereign-dashboard.js';
 import { monetizationRouter } from './services/monetization.js';
@@ -129,6 +130,8 @@ app.get('/', (req, res) => {
       'KUNTA NFT Ownership Benefits',
       'Prophecy Documentation Protocol Access',
       'Community Engagement Platform',
+      'Quantum Node Broadcasting',
+      'Sovereign Network Override'
       'ScrollSoul Onboarding System',
       'Sovereign Dashboard with Live Metrics',
       'Festival of Forever Fun Events'
@@ -199,6 +202,7 @@ app.get('/', (req, res) => {
       community: '/api/community',
       catalog: '/api/catalog',
       pdp: '/api/pdp',
+      quantum: '/api/quantum'
       onboarding: '/api/onboarding',
       dashboard: '/api/dashboard',
       festival: '/api/festival'
@@ -274,6 +278,7 @@ app.use('/api/scrollcoin', scrollCoinRouter);
 app.use('/api/community', communityRouter);
 app.use('/api/catalog', catalogRouter);
 app.use('/api/pdp', pdpRouter);
+app.use('/api/quantum', quantumRouter);
 app.use('/api/onboarding', onboardingRouter);
 app.use('/api/dashboard', dashboardRouter);
 app.use('/api/festival', festivalRouter);
