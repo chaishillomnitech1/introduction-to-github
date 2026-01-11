@@ -137,18 +137,20 @@ contract AllianceTreasuryRouter is Ownable, ReentrancyGuard {
      * @notice Receive and distribute yield according to SSL v1.0
      */
     receive() external payable {
-        require(!paused, "Contract paused");
-        require(msg.value > 0, "No value sent");
-        
-        _distributeYield(msg.value);
-        
-        emit YieldReceived(msg.sender, msg.value, block.timestamp);
+        _handleYieldReceipt();
     }
     
     /**
      * @notice Fallback function for yield distribution
      */
     fallback() external payable {
+        _handleYieldReceipt();
+    }
+    
+    /**
+     * @notice Internal handler for yield receipt
+     */
+    function _handleYieldReceipt() internal {
         require(!paused, "Contract paused");
         require(msg.value > 0, "No value sent");
         

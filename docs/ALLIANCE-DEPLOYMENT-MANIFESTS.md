@@ -19,8 +19,8 @@ manifest_version: "1.0.0"
 
 # Alliance Configuration
 alliance_config:
-  sovereign_beneficiary: "0x0000000000000000000000000000000000000000" # Update with actual address
-  zakat_treasury: "0x0000000000000000000000000000000000000000" # Update with actual address
+  sovereign_beneficiary: "UPDATE_SOVEREIGN_BENEFICIARY_ADDRESS" # REQUIRED: Replace with actual address
+  zakat_treasury: "UPDATE_ZAKAT_TREASURY_ADDRESS" # REQUIRED: Replace with actual address
   zakat_percentage: 250  # 2.5% in basis points
   registration_timestamp: null # Set at deployment
   certification_timestamp: null # Set after audit
@@ -38,7 +38,7 @@ assets:
     royalty_percentage: 250 # 2.5% in basis points
     legal_document_uri: "ipfs://QmXXXXXXXXXXXXXXXXXXXXXX"
     verification_required: true
-    asset_owner: "0x0000000000000000000000000000000000000000"
+    asset_owner: "UPDATE_ASSET_OWNER_ADDRESS" # REQUIRED: Replace with actual address
     
   - asset_id: "RWA-RE-002"
     asset_type: "real_estate"
@@ -51,7 +51,7 @@ assets:
     royalty_percentage: 250
     legal_document_uri: "ipfs://QmYYYYYYYYYYYYYYYYYYYYYY"
     verification_required: true
-    asset_owner: "0x0000000000000000000000000000000000000000"
+    asset_owner: "UPDATE_ASSET_OWNER_ADDRESS" # REQUIRED: Replace with actual address
 
 # Yield Distribution
 yield_distribution:
@@ -65,11 +65,11 @@ yield_distribution:
 governance:
   multisig_enabled: true
   signers:
-    - "0x0000000000000000000000000000000000000001"
-    - "0x0000000000000000000000000000000000000002"
-    - "0x0000000000000000000000000000000000000003"
-    - "0x0000000000000000000000000000000000000004"
-    - "0x0000000000000000000000000000000000000005"
+    - "UPDATE_SIGNER_1_ADDRESS" # REQUIRED
+    - "UPDATE_SIGNER_2_ADDRESS" # REQUIRED
+    - "UPDATE_SIGNER_3_ADDRESS" # REQUIRED
+    - "UPDATE_SIGNER_4_ADDRESS" # REQUIRED
+    - "UPDATE_SIGNER_5_ADDRESS" # REQUIRED
   signers_required: 3
   timelock_days: 7
   governance_token: null # Optional DAO token
@@ -96,7 +96,7 @@ integration:
 # Deployment
 deployment:
   network: "mainnet" # or "sepolia" for testnet
-  deployer_address: "0x0000000000000000000000000000000000000000"
+  deployer_address: "UPDATE_DEPLOYER_ADDRESS" # REQUIRED
   gas_price_strategy: "medium"
   verify_on_etherscan: true
 ```
@@ -131,7 +131,7 @@ assets:
     royalty_percentage: 500 # 5% for IP
     legal_document_uri: "ipfs://QmIPIPIPIPIPIPIPIPIPIPIP"
     verification_required: true
-    asset_owner: "0x0000000000000000000000000000000000000000"
+    asset_owner: "UPDATE_ASSET_OWNER_ADDRESS" # REQUIRED
     
   - asset_id: "RWA-IP-002"
     asset_type: "intellectual_property"
@@ -144,7 +144,7 @@ assets:
     royalty_percentage: 500
     legal_document_uri: "ipfs://QmPATENTPATENTPATENTPATENT"
     verification_required: true
-    asset_owner: "0x0000000000000000000000000000000000000000"
+    asset_owner: "UPDATE_ASSET_OWNER_ADDRESS" # REQUIRED
 
 # Yield Distribution
 yield_distribution:

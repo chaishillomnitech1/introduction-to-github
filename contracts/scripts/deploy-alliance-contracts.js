@@ -25,12 +25,27 @@ async function main() {
 
   // Configuration
   const config = {
-    // Update these addresses for production deployment
-    sovereignBeneficiary: process.env.SOVEREIGN_BENEFICIARY || deployer.address,
-    zakatTreasury: process.env.ZAKAT_TREASURY || deployer.address,
+    // IMPORTANT: These addresses MUST be set via environment variables for production
+    sovereignBeneficiary: process.env.SOVEREIGN_BENEFICIARY,
+    zakatTreasury: process.env.ZAKAT_TREASURY,
     zakatPercentageBPS: 250, // 2.5%
     network: hre.network.name
   };
+  
+  // Validate required addresses for non-local networks
+  if (config.network !== 'hardhat' && config.network !== 'localhost') {
+    if (!config.sovereignBeneficiary || !config.zakatTreasury) {
+      console.error("\n❌ ERROR: SOVEREIGN_BENEFICIARY and ZAKAT_TREASURY environment variables are required for production deployments!");
+      console.error("Set these variables before deploying:\n");
+      console.error("export SOVEREIGN_BENEFICIARY=0x...");
+      console.error("export ZAKAT_TREASURY=0x...\n");
+      process.exit(1);
+    }
+  } else {
+    // Use deployer address only for local testing
+    config.sovereignBeneficiary = config.sovereignBeneficiary || deployer.address;
+    config.zakatTreasury = config.zakatTreasury || deployer.address;
+  }
 
   console.log("\nDeployment Configuration:");
   console.log("- Sovereign Beneficiary:", config.sovereignBeneficiary);

@@ -149,7 +149,8 @@ contract AllianceAssetBridge is ERC721, ERC721URIStorage, ERC721Royalty, Ownable
         require(royaltyPercentage >= MIN_ZAKAT_ROYALTY, "Royalty below minimum");
         require(assetOwner != address(0), "Invalid asset owner");
         
-        uint256 tokenId = _tokenIdCounter++;
+        // Increment first so token IDs start from 1
+        uint256 tokenId = ++_tokenIdCounter;
         
         // Mint NFT to asset owner
         _safeMint(assetOwner, tokenId);

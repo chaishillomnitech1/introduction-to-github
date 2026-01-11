@@ -112,8 +112,8 @@ contract RealWorldAllianceRegistry is Ownable, ReentrancyGuard {
     /// @notice Mapping of alliance ID to yield distribution
     mapping(uint256 => YieldDistribution) public yieldDistributions;
     
-    /// @notice Set of certified alliance IDs
-    EnumerableSet.AddressSet private certifiedAlliances;
+    /// @notice Set of certified alliance contract addresses
+    EnumerableSet.AddressSet private certifiedAllianceContracts;
     
     /// @notice Counter for alliance IDs
     uint256 public allianceCounter;
@@ -248,7 +248,7 @@ contract RealWorldAllianceRegistry is Ownable, ReentrancyGuard {
         alliance.status = AllianceStatus.CERTIFIED;
         alliance.certificationTimestamp = block.timestamp;
         
-        certifiedAlliances.add(alliance.contractAddress);
+        certifiedAllianceContracts.add(alliance.contractAddress);
         
         emit AllianceCertified(allianceId, block.timestamp);
         emit SSLComplianceVerified(allianceId, true);
@@ -417,7 +417,7 @@ contract RealWorldAllianceRegistry is Ownable, ReentrancyGuard {
      * @notice Check if contract is certified
      */
     function isCertified(address contractAddress) external view returns (bool) {
-        return certifiedAlliances.contains(contractAddress);
+        return certifiedAllianceContracts.contains(contractAddress);
     }
     
     // ========== ADMIN FUNCTIONS ==========
@@ -431,9 +431,9 @@ contract RealWorldAllianceRegistry is Ownable, ReentrancyGuard {
         alliance.status = newStatus;
         
         if (newStatus == AllianceStatus.CERTIFIED) {
-            certifiedAlliances.add(alliance.contractAddress);
+            certifiedAllianceContracts.add(alliance.contractAddress);
         } else {
-            certifiedAlliances.remove(alliance.contractAddress);
+            certifiedAllianceContracts.remove(alliance.contractAddress);
         }
         
         emit AllianceStatusUpdated(allianceId, oldStatus, newStatus);
