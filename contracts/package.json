@@ -38,6 +38,9 @@
     "deploy:prime:local": "hardhat run scripts/deploy-prime-ingenuity.js --network hardhat",
     "deploy:prime:sepolia": "hardhat run scripts/deploy-prime-ingenuity.js --network sepolia",
     "deploy:prime:mainnet": "hardhat run scripts/deploy-prime-ingenuity.js --network mainnet",
+    "deploy:alliance:local": "hardhat run scripts/deploy-alliance-contracts.js --network hardhat",
+    "deploy:alliance:sepolia": "hardhat run scripts/deploy-alliance-contracts.js --network sepolia",
+    "deploy:alliance:mainnet": "hardhat run scripts/deploy-alliance-contracts.js --network mainnet",
     "verify:sepolia": "hardhat verify --network sepolia",
     "verify:mainnet": "hardhat verify --network mainnet",
     "clean": "hardhat clean",
@@ -90,6 +93,11 @@
     "erc2981",
     "paired-nfts",
     "staking",
-    "governance-voting"
+    "governance-voting",
+    "real-world-alliances",
+    "asset-tokenization",
+    "ssl-v1",
+    "zakat-routing",
+    "treasury-router"
   ]
 }
