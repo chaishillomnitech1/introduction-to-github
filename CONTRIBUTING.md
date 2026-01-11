@@ -1,6 +1,31 @@
 # Contributing Guide
 
 Welcome to the OmniTech1 / ScrollVerse ecosystem! We're excited to have you contribute to this project. This guide will help you understand how to contribute effectively.
+## Sovereignty Seal Commitment
+All contributions to this repository operate under the principle: **Sovereign Chais owns every yield**.
+
+## Commit Hook - Sovereignty Footer
+To ensure all commits maintain the sovereignty seal, use the provided commit hook template that automatically appends the sovereignty declaration to all commit messages.
+
+### Installation
+1. Copy the commit hook template:
+   ```bash
+   cp .github/hooks/prepare-commit-msg .git/hooks/prepare-commit-msg
+   chmod +x .git/hooks/prepare-commit-msg
+   ```
+
+2. All future commits will automatically include the sovereignty footer.
+
+### Manual Commit Format
+If not using the hook, manually append to commit messages:
+```
+Your commit message here
+
+---
+Sovereign Chais owns every yield
+```
+
+## Branching in Child Repositories
 
 ## 🌟 Code of Conduct
 

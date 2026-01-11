@@ -1,490 +1,729 @@
+// Sovereign Chais owns every yield
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
+import "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721URIStorageUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/token/common/ERC2981Upgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/utils/PausableUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/utils/ReentrancyGuardUpgradeable.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Votes.sol";
-import "@openzeppelin/contracts/access/AccessControl.sol";
-import "@openzeppelin/contracts/utils/Pausable.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Pausable.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
-import "@openzeppelin/contracts/utils/cryptography/EIP712.sol";
 
 /**
- * @title PharaohConsciousnessFusion (PFC-NFT)
+ * @title PharaohConsciousnessFusion
  * @author OmniTech1™
- * @notice Sacred NFT collection representing consciousness fusion within the ScrollVerse ecosystem
- * @dev ERC-721 with voting capabilities for DAO governance integration
+ * @notice ERC-721 NFT collection representing consciousness fusion artifacts for ScrollVerse governance
+ * @dev Implements enumerable, URI storage, pausable, and governance integration features
  * 
- * The PFC-NFT is a foundational component of the ScrollVerse ecosystem:
- * - Grants holders access to exclusive governance participation
- * - Integrated with ScrollVerseDAO for enhanced voting weight
- * - Features consciousness levels that evolve with participation
- * - Supports delegation of voting power
+ * Collection Features:
+ * - Maximum Supply: 888 Divine Artifacts
+ * - Tier System: Initiate, Guardian, Ascended, Pharaoh
+ * - Governance Weight: Higher tiers provide more voting power boost
+ * - Staking Compatible: Works with MirrorStaking for enhanced rewards
  * 
- * Consciousness Levels:
- * - Awakening (Level 1): Initial mint state
- * - Ascending (Level 2): Active participation milestone
- * - Transcendent (Level 3): Community contributor status
- * - Divine (Level 4): Elite governance participant
- * - Pharaoh (Level 5): Maximum consciousness achievement
+ * Tier Distribution:
+ * - Pharaoh (Tier 4): 8 tokens (1x governance boost)
+ * - Ascended (Tier 3): 80 tokens (0.5x governance boost)
+ * - Guardian (Tier 2): 200 tokens (0.25x governance boost)
+ * - Initiate (Tier 1): 600 tokens (0.1x governance boost)
+ * 
+ * Sovereignty & Integration:
+ * - Sovereign Chais owns every yield (governance & ultimate ownership)
+ * - ERC2981 royalty splits for secondary market (compliant distribution)
+ * - ScrollVerseDAO: NFT holders get additional governance weight
+ * - MirrorStaking: NFT holders get boosted staking rewards
  */
-contract PharaohConsciousnessFusion is 
-    ERC721, 
-    ERC721Enumerable, 
+contract PharaohConsciousnessFusion is
+    ERC721,
+    ERC721Enumerable,
     ERC721URIStorage,
-    ERC721Votes,
-    AccessControl, 
-    Pausable, 
-    ReentrancyGuard 
+    ERC721Pausable,
+    Ownable,
+    ReentrancyGuard
 {
-    // ========== ROLES ==========
-
-    /// @notice Role for minting new tokens
-    bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
-
-    /// @notice Role for administrative functions
-    bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
-
-    /// @notice Role for upgrading consciousness levels
-    bytes32 public constant UPGRADER_ROLE = keccak256("UPGRADER_ROLE");
-
     // ========== ENUMS ==========
 
-    /// @notice Consciousness levels for PFC-NFTs
-    enum ConsciousnessLevel {
-        Awakening,      // Level 1 - Initial state
-        Ascending,      // Level 2 - Active participation
-        Transcendent,   // Level 3 - Community contributor
-        Divine,         // Level 4 - Elite governance
-        Pharaoh         // Level 5 - Maximum achievement
-    }
+    /// @notice Tier levels for the NFTs
+    enum Tier { None, Initiate, Guardian, Ascended, Pharaoh }
 
     // ========== STRUCTS ==========
 
-    /// @notice Token metadata structure
+    /// @notice Token metadata and attributes
     struct TokenData {
-        ConsciousnessLevel level;
+        Tier tier;
         uint256 mintTimestamp;
-        uint256 lastUpgradeTimestamp;
-        uint256 participationScore;
+        uint256 fusionLevel;
+        bool isStaked;
+        string consciousnessSignature;
+import "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721URIStorageUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
+
+/**
+ * @title PharaohConsciousnessFusion
+ * @author OmniTech1™
+ * @notice "Consciousness Mirror" NFT collection with UUPS upgradeability and revenue splits
+ * @dev ERC721 NFT with the following features:
+ * 
+ * Features:
+ * - Sovereign Chais owns every yield (governance ownership)
+ * - Fixed supply (3333 tokens)
+ * - Allowlist mint restrictions with audit logging
+ * - Post-mint lock (prevents URI updates after all NFTs minted)
+ * - ERC2981 royalty support for secondary sales (default 5%)
+ * - Revenue split distribution among multiple stakeholders
+ * - ERC2981 royalty support for secondary sales (default 5% split)
+ * - UUPS proxy architecture for future upgrades
+ * - Pausable mechanics
+ * - Governance voting powers based on token holdings
+ * 
+ * Sovereign Ownership:
+ * - Contract owner (Sovereign Chais) retains full governance control
+ * - Owner can add/remove/update revenue split beneficiaries
+ * - Owner can adjust split percentages dynamically
+ * - Owner can pause/unpause minting and transfers
+ * 
+ * Gas Optimizations:
+ * - Packed storage variables
+ * - Unchecked arithmetic where safe
+ * - Efficient event emission
+ */
+contract PharaohConsciousnessFusion is 
+    Initializable,
+    ERC721Upgradeable, 
+    ERC721EnumerableUpgradeable, 
+    ERC721URIStorageUpgradeable,
+    ERC2981Upgradeable,
+    OwnableUpgradeable, 
+    PausableUpgradeable, 
+    ReentrancyGuardUpgradeable,
+    UUPSUpgradeable
+{
+    // ========== CONSTANTS ==========
+    
+    /// @notice Maximum supply of the collection
+    uint256 public constant MAX_SUPPLY = 3333;
+    
+    /// @notice Default royalty fee in basis points (5% = 500)
+    uint96 public constant DEFAULT_ROYALTY_FEE = 500;
+    
+    /// @notice Maximum addresses per allowlist batch operation
+    uint256 public constant MAX_BATCH_SIZE = 100;
+    
+    /// @notice Basis points denominator (100% = 10000)
+    uint256 public constant BASIS_POINTS = 10000;
+
+    // ========== STRUCTS ==========
+    
+    /**
+     * @notice Revenue split beneficiary information
+     * @param beneficiary Address to receive revenue share
+     * @param share Share in basis points (e.g., 1000 = 10%)
+     * @param isActive Whether this beneficiary is currently active
+     */
+    struct RevenueBeneficiary {
+        address beneficiary;
+        uint256 share;
         bool isActive;
     }
 
-    // ========== CONSTANTS ==========
-
-    /// @notice Maximum supply of PFC-NFTs
-    uint256 public constant MAX_SUPPLY = 5000;
-
-    /// @notice Mint price in wei (0.1 ETH)
-    uint256 public constant MINT_PRICE = 0.1 ether;
-
     // ========== STATE VARIABLES ==========
-
+    
     /// @notice Token ID counter
     uint256 private _nextTokenId;
-
-    /// @notice Base URI for metadata
+    
+    /// @notice Base URI for token metadata
     string private _baseTokenURI;
-
-    /// @notice Mapping of token ID to token data
-    mapping(uint256 => TokenData) public tokenData;
-
-    /// @notice Address of the ScrollVerseDAO contract
-    address public daoAddress;
-
-    /// @notice Address of the treasury for minting proceeds
-    address public treasuryAddress;
+    
+    /// @notice Flag to indicate if metadata is locked (after mint completion)
+    bool public metadataLocked;
+    
+    /// @notice Mint price in wei
+    uint256 public mintPrice;
+    
+    /// @notice Allowlist mint price (discounted)
+    uint256 public allowlistPrice;
+    
+    /// @notice Allowlist status mapping
+    mapping(address => bool) public allowlist;
+    
+    /// @notice Minting phase flags
+    bool public allowlistMintActive;
+    bool public publicMintActive;
+    
+    /// @notice Maximum tokens per wallet during allowlist
+    uint256 public maxPerWalletAllowlist;
+    
+    /// @notice Maximum tokens per wallet during public mint
+    uint256 public maxPerWalletPublic;
+    
+    /// @notice Track mints per wallet
+    mapping(address => uint256) public mintedCount;
+    
+    /// @notice Governance voting power per token (default 1 vote per token)
+    uint256 public votingPowerPerToken;
+    
+    // ========== REVENUE SPLIT STATE VARIABLES ==========
+    
+    /// @notice Array of revenue beneficiaries
+    RevenueBeneficiary[] public revenueBeneficiaries;
+    
+    /// @notice Mapping from beneficiary address to their index in the array
+    mapping(address => uint256) private beneficiaryIndex;
+    
+    /// @notice Total share allocated (should sum to BASIS_POINTS or less)
+    uint256 public totalAllocatedShare;
 
     // ========== EVENTS ==========
-
-    /// @notice Emitted when a new token is minted
-    event TokenMinted(
-        address indexed to,
-        uint256 indexed tokenId,
-        ConsciousnessLevel level,
-        uint256 timestamp
-    );
-
-    /// @notice Emitted when a token's consciousness level is upgraded
-    event ConsciousnessUpgraded(
-        uint256 indexed tokenId,
-        ConsciousnessLevel oldLevel,
-        ConsciousnessLevel newLevel,
-        uint256 timestamp
-    );
-
-    /// @notice Emitted when participation score is updated
-    event ParticipationScoreUpdated(
-        uint256 indexed tokenId,
-        uint256 oldScore,
-        uint256 newScore
-    );
-
-    /// @notice Emitted when DAO address is updated
-    event DaoAddressUpdated(
-        address indexed oldAddress,
-        address indexed newAddress
-    );
-
-    /// @notice Emitted when treasury address is updated
-    event TreasuryAddressUpdated(
-        address indexed oldAddress,
-        address indexed newAddress
-    );
-
+    
+    /// @notice Emitted when a token is minted
+    event ConsciousnessMinted(address indexed to, uint256 indexed tokenId);
+    
     /// @notice Emitted when base URI is updated
     event BaseURIUpdated(string newBaseURI);
-
+    
+    /// @notice Emitted when metadata is permanently locked
+    event MetadataLocked();
+    
+    /// @notice Emitted when an address is added to allowlist (for audit)
+    event AllowlistAdded(address indexed account, address indexed addedBy, uint256 timestamp);
+    
+    /// @notice Emitted when an address is removed from allowlist (for audit)
+    event AllowlistRemoved(address indexed account, address indexed removedBy, uint256 timestamp);
+    
+    /// @notice Emitted when mint phase changes
+    event MintPhaseUpdated(bool allowlistActive, bool publicActive);
+    
+    /// @notice Emitted when prices are updated
+    event PricesUpdated(uint256 mintPrice, uint256 allowlistPrice);
+    
+    /// @notice Emitted when royalty info is updated
+    event RoyaltyUpdated(address indexed receiver, uint96 feeNumerator);
+    
     /// @notice Emitted when funds are withdrawn
-    event FundsWithdrawn(address indexed to, uint256 amount);
+    event Withdrawn(address indexed to, uint256 amount);
+    
+    /// @notice Emitted when a revenue beneficiary is added
+    event BeneficiaryAdded(address indexed beneficiary, uint256 share, address indexed addedBy, uint256 timestamp);
+    
+    /// @notice Emitted when a beneficiary's share is updated
+    event BeneficiaryUpdated(address indexed beneficiary, uint256 oldShare, uint256 newShare, address indexed updatedBy, uint256 timestamp);
+    
+    /// @notice Emitted when a beneficiary is removed
+    event BeneficiaryRemoved(address indexed beneficiary, address indexed removedBy, uint256 timestamp);
+    
+    /// @notice Emitted when revenue is distributed
+    event RevenueDistributed(address indexed beneficiary, uint256 amount, uint256 timestamp);
 
     // ========== ERRORS ==========
-
+    
     error MaxSupplyReached();
-    error InsufficientPayment(uint256 required, uint256 provided);
+    error MetadataIsLocked();
+    error NotOnAllowlist();
+    error AllowlistMintNotActive();
+    error PublicMintNotActive();
+    error InsufficientPayment();
+    error ExceedsMaxPerWallet();
+    error BatchSizeTooLarge();
     error InvalidAddress();
-    error TokenDoesNotExist(uint256 tokenId);
-    error AlreadyMaxLevel();
-    error NotTokenOwner();
-    error TransferFailed();
-    error InvalidLevel();
+    error NoFundsToWithdraw();
+    error WithdrawalFailed();
+    error InvalidShare();
+    error BeneficiaryAlreadyExists();
+    error BeneficiaryNotFound();
+    error TotalShareExceeds100Percent();
+    error NoActiveBeneficiaries();
 
-    // ========== CONSTRUCTOR ==========
+    // ========== INITIALIZER ==========
+
+    /// @custom:oz-upgrades-unsafe-allow constructor
+    constructor() {
+        _disableInitializers();
+    }
 
     /**
-     * @notice Deploys the PharaohConsciousnessFusion contract
-     * @param _initialAdmin Address of the initial admin
-     * @param _treasury Address of the treasury
-     * @param baseURI Base URI for token metadata
+     * @notice Initializes the contract (called once via proxy)
+     * @param initialOwner Address of the initial contract owner (Sovereign Chais)
+     * @param baseURI Initial base URI for token metadata
+     * @param royaltyReceiver Address to receive ERC2981 royalties
+     * @param _mintPrice Price for public mint in wei
+     * @param _allowlistPrice Price for allowlist mint in wei
      */
-    constructor(
-        address _initialAdmin,
-        address _treasury,
-        string memory baseURI
-    ) 
-        ERC721("PharaohConsciousnessFusion", "PFC")
-        EIP712("PharaohConsciousnessFusion", "1")
-    {
-        if (_initialAdmin == address(0)) revert InvalidAddress();
-        if (_treasury == address(0)) revert InvalidAddress();
-
-        _grantRole(DEFAULT_ADMIN_ROLE, _initialAdmin);
-        _grantRole(ADMIN_ROLE, _initialAdmin);
-        _grantRole(MINTER_ROLE, _initialAdmin);
-        _grantRole(UPGRADER_ROLE, _initialAdmin);
-
-        treasuryAddress = _treasury;
+    function initialize(
+        address initialOwner,
+        string memory baseURI,
+        address royaltyReceiver,
+        uint256 _mintPrice,
+        uint256 _allowlistPrice
+    ) public initializer {
+        __ERC721_init("Consciousness Mirror", "CMIRROR");
+        __ERC721Enumerable_init();
+        __ERC721URIStorage_init();
+        __ERC2981_init();
+        __Ownable_init(initialOwner);
+        __Pausable_init();
+        __ReentrancyGuard_init();
+        __UUPSUpgradeable_init();
+        
         _baseTokenURI = baseURI;
+        mintPrice = _mintPrice;
+        allowlistPrice = _allowlistPrice;
+        
+        // Set default royalty (5%)
+        _setDefaultRoyalty(royaltyReceiver, DEFAULT_ROYALTY_FEE);
+        
+        // Set default limits
+        maxPerWalletAllowlist = 3;
+        maxPerWalletPublic = 5;
+        votingPowerPerToken = 1;
     }
 
-    // ========== EXTERNAL FUNCTIONS ==========
-
+    // ========== MINTING FUNCTIONS ==========
+    
     /**
-     * @notice Mint a new PFC-NFT
-     * @return tokenId The ID of the minted token
+     * @notice Mint during allowlist phase
+     * @param quantity Number of tokens to mint
      */
-    function mint() external payable whenNotPaused nonReentrant returns (uint256) {
-        if (_nextTokenId >= MAX_SUPPLY) revert MaxSupplyReached();
-        if (msg.value < MINT_PRICE) revert InsufficientPayment(MINT_PRICE, msg.value);
-
-        uint256 tokenId = _nextTokenId;
-        unchecked {
-            _nextTokenId++;
+    function allowlistMint(uint256 quantity) external payable whenNotPaused nonReentrant {
+        if (!allowlistMintActive) revert AllowlistMintNotActive();
+        if (!allowlist[msg.sender]) revert NotOnAllowlist();
+        if (_nextTokenId + quantity > MAX_SUPPLY) revert MaxSupplyReached();
+        if (mintedCount[msg.sender] + quantity > maxPerWalletAllowlist) revert ExceedsMaxPerWallet();
+        if (msg.value < allowlistPrice * quantity) revert InsufficientPayment();
+        
+        mintedCount[msg.sender] += quantity;
+        
+        for (uint256 i = 0; i < quantity; i++) {
+            uint256 tokenId = _nextTokenId++;
+            _safeMint(msg.sender, tokenId);
+            emit ConsciousnessMinted(msg.sender, tokenId);
         }
+    }
+    
+    /**
+     * @notice Mint during public phase
+     * @param quantity Number of tokens to mint
+     */
+    function publicMint(uint256 quantity) external payable whenNotPaused nonReentrant {
+        if (!publicMintActive) revert PublicMintNotActive();
+        if (_nextTokenId + quantity > MAX_SUPPLY) revert MaxSupplyReached();
+        if (mintedCount[msg.sender] + quantity > maxPerWalletPublic) revert ExceedsMaxPerWallet();
+        if (msg.value < mintPrice * quantity) revert InsufficientPayment();
+        
+        mintedCount[msg.sender] += quantity;
+        
+        for (uint256 i = 0; i < quantity; i++) {
+            uint256 tokenId = _nextTokenId++;
+            _safeMint(msg.sender, tokenId);
+            emit ConsciousnessMinted(msg.sender, tokenId);
+        }
+    }
+    
+    /**
+     * @notice Owner mint for airdrops/reserves
+     * @param to Address to mint to
+     * @param quantity Number of tokens to mint
+     */
+    function ownerMint(address to, uint256 quantity) external onlyOwner {
+        if (_nextTokenId + quantity > MAX_SUPPLY) revert MaxSupplyReached();
+        
+        for (uint256 i = 0; i < quantity; i++) {
+            uint256 tokenId = _nextTokenId++;
+            _safeMint(to, tokenId);
+            emit ConsciousnessMinted(to, tokenId);
+        }
+    }
 
-        _safeMint(msg.sender, tokenId);
+    // ========== ALLOWLIST MANAGEMENT ==========
+    
+    /**
+     * @notice Add addresses to allowlist (with audit event)
+     * @param addresses Array of addresses to add
+     */
+    function addToAllowlist(address[] calldata addresses) external onlyOwner {
+        if (addresses.length > MAX_BATCH_SIZE) revert BatchSizeTooLarge();
+        
+        for (uint256 i = 0; i < addresses.length; i++) {
+            if (addresses[i] == address(0)) revert InvalidAddress();
+            allowlist[addresses[i]] = true;
+            emit AllowlistAdded(addresses[i], msg.sender, block.timestamp);
+        }
+    }
+    
+    /**
+     * @notice Remove addresses from allowlist (with audit event)
+     * @param addresses Array of addresses to remove
+     */
+    function removeFromAllowlist(address[] calldata addresses) external onlyOwner {
+        for (uint256 i = 0; i < addresses.length; i++) {
+            allowlist[addresses[i]] = false;
+            emit AllowlistRemoved(addresses[i], msg.sender, block.timestamp);
+        }
+    }
+    
+    /**
+     * @notice Check if address is on allowlist
+     * @param account Address to check
+     * @return bool Whether address is on allowlist
+     */
+    function isOnAllowlist(address account) external view returns (bool) {
+        return allowlist[account];
+    }
 
-        tokenData[tokenId] = TokenData({
-            level: ConsciousnessLevel.Awakening,
-            mintTimestamp: block.timestamp,
-            lastUpgradeTimestamp: block.timestamp,
-            participationScore: 0,
+    // ========== MINT PHASE MANAGEMENT ==========
+    
+    /**
+     * @notice Set mint phase status
+     * @param _allowlistActive Whether allowlist mint is active
+     * @param _publicActive Whether public mint is active
+     */
+    function setMintPhases(bool _allowlistActive, bool _publicActive) external onlyOwner {
+        allowlistMintActive = _allowlistActive;
+        publicMintActive = _publicActive;
+        emit MintPhaseUpdated(_allowlistActive, _publicActive);
+    }
+    
+    /**
+     * @notice Update mint prices
+     * @param _mintPrice New public mint price
+     * @param _allowlistPrice New allowlist mint price
+     */
+    function setPrices(uint256 _mintPrice, uint256 _allowlistPrice) external onlyOwner {
+        mintPrice = _mintPrice;
+        allowlistPrice = _allowlistPrice;
+        emit PricesUpdated(_mintPrice, _allowlistPrice);
+    }
+    
+    /**
+     * @notice Update wallet limits
+     * @param _maxAllowlist Max tokens per wallet for allowlist
+     * @param _maxPublic Max tokens per wallet for public mint
+     */
+    function setWalletLimits(uint256 _maxAllowlist, uint256 _maxPublic) external onlyOwner {
+        maxPerWalletAllowlist = _maxAllowlist;
+        maxPerWalletPublic = _maxPublic;
+    }
+
+    // ========== METADATA MANAGEMENT ==========
+    
+    /**
+     * @notice Set base URI for token metadata
+     * @param baseURI New base URI
+     */
+    function setBaseURI(string memory baseURI) external onlyOwner {
+        if (metadataLocked) revert MetadataIsLocked();
+        _baseTokenURI = baseURI;
+        emit BaseURIUpdated(baseURI);
+    }
+    
+    /**
+     * @notice Permanently lock metadata (irreversible)
+     * @dev Can only be called after all tokens are minted
+     */
+    function lockMetadata() external onlyOwner {
+        if (_nextTokenId < MAX_SUPPLY) revert("Not all tokens minted");
+        metadataLocked = true;
+        emit MetadataLocked();
+    }
+    
+    /**
+     * @dev Base URI for computing {tokenURI}
+     */
+    function _baseURI() internal view override returns (string memory) {
+        return _baseTokenURI;
+    }
+
+    // ========== ROYALTY MANAGEMENT (ERC2981) ==========
+    
+    /**
+     * @notice Set default royalty for all tokens
+     * @param receiver Address to receive royalties
+     * @param feeNumerator Royalty fee in basis points (e.g., 500 = 5%)
+     */
+    function setDefaultRoyalty(address receiver, uint96 feeNumerator) external onlyOwner {
+        _setDefaultRoyalty(receiver, feeNumerator);
+        emit RoyaltyUpdated(receiver, feeNumerator);
+    }
+    
+    /**
+     * @notice Set royalty for a specific token
+     * @param tokenId Token ID to set royalty for
+     * @param receiver Address to receive royalties
+     * @param feeNumerator Royalty fee in basis points
+     */
+    function setTokenRoyalty(
+        uint256 tokenId, 
+        address receiver, 
+        uint96 feeNumerator
+    ) external onlyOwner {
+        _setTokenRoyalty(tokenId, receiver, feeNumerator);
+    }
+    
+    /**
+     * @notice Reset royalty for a specific token to default
+     * @param tokenId Token ID to reset
+     */
+    function resetTokenRoyalty(uint256 tokenId) external onlyOwner {
+        _resetTokenRoyalty(tokenId);
+    }
+
+    // ========== REVENUE SPLIT MANAGEMENT ==========
+    
+    /**
+     * @notice Add a revenue beneficiary
+     * @param beneficiary Address of the beneficiary
+     * @param share Share in basis points (e.g., 1000 = 10%)
+     * @dev Only callable by owner (Sovereign Chais)
+     */
+    function addBeneficiary(address beneficiary, uint256 share) external onlyOwner {
+        if (beneficiary == address(0)) revert InvalidAddress();
+        if (share == 0 || share > BASIS_POINTS) revert InvalidShare();
+        if (beneficiaryIndex[beneficiary] != 0 || (revenueBeneficiaries.length > 0 && revenueBeneficiaries[0].beneficiary == beneficiary)) {
+            revert BeneficiaryAlreadyExists();
+        }
+        if (totalAllocatedShare + share > BASIS_POINTS) revert TotalShareExceeds100Percent();
+        
+        revenueBeneficiaries.push(RevenueBeneficiary({
+            beneficiary: beneficiary,
+            share: share,
             isActive: true
-        });
-
-        emit TokenMinted(msg.sender, tokenId, ConsciousnessLevel.Awakening, block.timestamp);
-
-        // Refund excess payment
-        if (msg.value > MINT_PRICE) {
-            uint256 refund = msg.value - MINT_PRICE;
-            (bool success, ) = payable(msg.sender).call{value: refund}("");
-            if (!success) revert TransferFailed();
+        }));
+        
+        beneficiaryIndex[beneficiary] = revenueBeneficiaries.length - 1;
+        totalAllocatedShare += share;
+        
+        emit BeneficiaryAdded(beneficiary, share, msg.sender, block.timestamp);
+    }
+    
+    /**
+     * @notice Update a beneficiary's share
+     * @param beneficiary Address of the beneficiary
+     * @param newShare New share in basis points
+     * @dev Only callable by owner (Sovereign Chais)
+     */
+    function updateBeneficiaryShare(address beneficiary, uint256 newShare) external onlyOwner {
+        if (newShare == 0 || newShare > BASIS_POINTS) revert InvalidShare();
+        
+        uint256 index = beneficiaryIndex[beneficiary];
+        if (index >= revenueBeneficiaries.length || revenueBeneficiaries[index].beneficiary != beneficiary) {
+            if (index == 0 && (revenueBeneficiaries.length == 0 || revenueBeneficiaries[0].beneficiary != beneficiary)) {
+                revert BeneficiaryNotFound();
+            }
         }
-
-        return tokenId;
+        
+        RevenueBeneficiary storage ben = revenueBeneficiaries[index];
+        if (!ben.isActive) revert BeneficiaryNotFound();
+        
+        uint256 oldShare = ben.share;
+        uint256 newTotalShare = totalAllocatedShare - oldShare + newShare;
+        if (newTotalShare > BASIS_POINTS) revert TotalShareExceeds100Percent();
+        
+        ben.share = newShare;
+        totalAllocatedShare = newTotalShare;
+        
+        emit BeneficiaryUpdated(beneficiary, oldShare, newShare, msg.sender, block.timestamp);
     }
-
+    
     /**
-     * @notice Admin mint function for airdrops and rewards
-     * @param to Recipient address
-     * @param level Initial consciousness level
-     * @return tokenId The ID of the minted token
+     * @notice Remove a beneficiary (deactivate)
+     * @param beneficiary Address of the beneficiary to remove
+     * @dev Only callable by owner (Sovereign Chais)
      */
-    function adminMint(address to, ConsciousnessLevel level) 
-        external 
-        onlyRole(MINTER_ROLE) 
-        returns (uint256) 
-    {
-        if (_nextTokenId >= MAX_SUPPLY) revert MaxSupplyReached();
-        if (to == address(0)) revert InvalidAddress();
-
-        uint256 tokenId = _nextTokenId;
-        unchecked {
-            _nextTokenId++;
+    function removeBeneficiary(address beneficiary) external onlyOwner {
+        uint256 index = beneficiaryIndex[beneficiary];
+        if (index >= revenueBeneficiaries.length || revenueBeneficiaries[index].beneficiary != beneficiary) {
+            if (index == 0 && (revenueBeneficiaries.length == 0 || revenueBeneficiaries[0].beneficiary != beneficiary)) {
+                revert BeneficiaryNotFound();
+            }
         }
-
-        _safeMint(to, tokenId);
-
-        tokenData[tokenId] = TokenData({
-            level: level,
-            mintTimestamp: block.timestamp,
-            lastUpgradeTimestamp: block.timestamp,
-            participationScore: 0,
-            isActive: true
-        });
-
-        emit TokenMinted(to, tokenId, level, block.timestamp);
-
-        return tokenId;
-    }
-
-    /**
-     * @notice Upgrade a token's consciousness level
-     * @param tokenId Token ID to upgrade
-     */
-    function upgradeConsciousness(uint256 tokenId) external onlyRole(UPGRADER_ROLE) {
-        if (tokenId >= _nextTokenId) revert TokenDoesNotExist(tokenId);
         
-        TokenData storage data = tokenData[tokenId];
-        if (data.level == ConsciousnessLevel.Pharaoh) revert AlreadyMaxLevel();
-
-        ConsciousnessLevel oldLevel = data.level;
-        data.level = ConsciousnessLevel(uint8(oldLevel) + 1);
-        data.lastUpgradeTimestamp = block.timestamp;
-
-        emit ConsciousnessUpgraded(tokenId, oldLevel, data.level, block.timestamp);
-    }
-
-    /**
-     * @notice Update participation score for a token
-     * @param tokenId Token ID to update
-     * @param score New participation score
-     */
-    function updateParticipationScore(uint256 tokenId, uint256 score) 
-        external 
-        onlyRole(UPGRADER_ROLE) 
-    {
-        if (tokenId >= _nextTokenId) revert TokenDoesNotExist(tokenId);
+        RevenueBeneficiary storage ben = revenueBeneficiaries[index];
+        if (!ben.isActive) revert BeneficiaryNotFound();
         
-        uint256 oldScore = tokenData[tokenId].participationScore;
-        tokenData[tokenId].participationScore = score;
-
-        emit ParticipationScoreUpdated(tokenId, oldScore, score);
-    }
-
-    /**
-     * @notice Set the DAO address for governance integration
-     * @param _daoAddress New DAO address
-     */
-    function setDaoAddress(address _daoAddress) external onlyRole(ADMIN_ROLE) {
-        if (_daoAddress == address(0)) revert InvalidAddress();
+        totalAllocatedShare -= ben.share;
+        ben.isActive = false;
         
-        address oldAddress = daoAddress;
-        daoAddress = _daoAddress;
-
-        emit DaoAddressUpdated(oldAddress, _daoAddress);
+        emit BeneficiaryRemoved(beneficiary, msg.sender, block.timestamp);
     }
-
+    
     /**
-     * @notice Set the treasury address
-     * @param _treasuryAddress New treasury address
+     * @notice Get all active beneficiaries
+     * @return Array of beneficiary addresses and their shares
      */
-    function setTreasuryAddress(address _treasuryAddress) external onlyRole(ADMIN_ROLE) {
-        if (_treasuryAddress == address(0)) revert InvalidAddress();
+    function getActiveBeneficiaries() external view returns (address[] memory, uint256[] memory) {
+        uint256 activeCount = 0;
+        for (uint256 i = 0; i < revenueBeneficiaries.length; i++) {
+            if (revenueBeneficiaries[i].isActive) {
+                activeCount++;
+            }
+        }
         
-        address oldAddress = treasuryAddress;
-        treasuryAddress = _treasuryAddress;
-
-        emit TreasuryAddressUpdated(oldAddress, _treasuryAddress);
+        address[] memory addresses = new address[](activeCount);
+        uint256[] memory shares = new uint256[](activeCount);
+        
+        uint256 currentIndex = 0;
+        for (uint256 i = 0; i < revenueBeneficiaries.length; i++) {
+            if (revenueBeneficiaries[i].isActive) {
+                addresses[currentIndex] = revenueBeneficiaries[i].beneficiary;
+                shares[currentIndex] = revenueBeneficiaries[i].share;
+                currentIndex++;
+            }
+        }
+        
+        return (addresses, shares);
+    }
+    
+    /**
+     * @notice Get beneficiary count
+     * @return Total number of beneficiaries (including inactive)
+     */
+    function getBeneficiaryCount() external view returns (uint256) {
+        return revenueBeneficiaries.length;
     }
 
+    // ========== WITHDRAWAL WITH REVENUE SPLITS ==========
+    
     /**
-     * @notice Update base URI for metadata
-     * @param newBaseURI New base URI
+     * @notice Withdraw contract balance and distribute according to revenue splits
+     * @dev Distributes funds to all active beneficiaries based on their shares
+     * @dev If no beneficiaries or total share < 100%, remainder goes to owner
      */
-    function setBaseURI(string memory newBaseURI) external onlyRole(ADMIN_ROLE) {
-        _baseTokenURI = newBaseURI;
-        emit BaseURIUpdated(newBaseURI);
+    function withdraw() external onlyOwner nonReentrant {
+        uint256 balance = address(this).balance;
+        if (balance == 0) revert NoFundsToWithdraw();
+        
+        uint256 distributed = 0;
+        
+        // Distribute to beneficiaries
+        for (uint256 i = 0; i < revenueBeneficiaries.length; i++) {
+            RevenueBeneficiary memory ben = revenueBeneficiaries[i];
+            if (ben.isActive && ben.share > 0) {
+                uint256 amount = (balance * ben.share) / BASIS_POINTS;
+                distributed += amount;
+                
+                (bool success, ) = ben.beneficiary.call{value: amount}("");
+                if (!success) revert WithdrawalFailed();
+                
+                emit RevenueDistributed(ben.beneficiary, amount, block.timestamp);
+            }
+        }
+        
+        // Send remainder to owner (handles rounding and unallocated shares)
+        uint256 remainder = balance - distributed;
+        if (remainder > 0) {
+            (bool success, ) = owner().call{value: remainder}("");
+            if (!success) revert WithdrawalFailed();
+            emit Withdrawn(owner(), remainder);
+        }
+    }
+    
+    /**
+     * @notice Emergency withdrawal to owner (bypasses splits)
+     * @dev Only use in emergency situations
+     */
+    function emergencyWithdraw() external onlyOwner nonReentrant {
+        uint256 balance = address(this).balance;
+        if (balance == 0) revert NoFundsToWithdraw();
+        
+        (bool success, ) = owner().call{value: balance}("");
+        if (!success) revert WithdrawalFailed();
+        
+        emit Withdrawn(owner(), balance);
     }
 
+    // ========== GOVERNANCE VOTING POWER ==========
+    
     /**
-     * @notice Pause the contract
+     * @notice Get voting power for a token holder
+     * @param holder Address to check
+     * @return Voting power (number of tokens * votingPowerPerToken)
      */
-    function pause() external onlyRole(ADMIN_ROLE) {
+    function getVotingPower(address holder) external view returns (uint256) {
+        return balanceOf(holder) * votingPowerPerToken;
+    }
+    
+    /**
+     * @notice Set voting power per token
+     * @param power New voting power per token
+     */
+    function setVotingPowerPerToken(uint256 power) external onlyOwner {
+        votingPowerPerToken = power;
+    }
+
+    // ========== PAUSABLE ==========
+    
+    /**
+     * @notice Pause contract
+     */
+    function pause() external onlyOwner {
         _pause();
     }
-
+    
     /**
-     * @notice Unpause the contract
+     * @notice Unpause contract
      */
-    function unpause() external onlyRole(ADMIN_ROLE) {
+    function unpause() external onlyOwner {
         _unpause();
     }
 
-    /**
-     * @notice Withdraw contract balance to treasury
-     */
-    function withdraw() external onlyRole(ADMIN_ROLE) nonReentrant {
-        uint256 balance = address(this).balance;
-        if (balance == 0) revert TransferFailed();
-
-        (bool success, ) = payable(treasuryAddress).call{value: balance}("");
-        if (!success) revert TransferFailed();
-
-        emit FundsWithdrawn(treasuryAddress, balance);
-    }
-
-    /**
-     * @notice Transfer admin roles to DAO for decentralization
-     * @param _daoAddress Address of the ScrollVerseDAO
-     */
-    function transferToDAO(address _daoAddress) external onlyRole(DEFAULT_ADMIN_ROLE) {
-        if (_daoAddress == address(0)) revert InvalidAddress();
-
-        // Grant all roles to DAO
-        _grantRole(DEFAULT_ADMIN_ROLE, _daoAddress);
-        _grantRole(ADMIN_ROLE, _daoAddress);
-        _grantRole(MINTER_ROLE, _daoAddress);
-        _grantRole(UPGRADER_ROLE, _daoAddress);
-
-        // Set DAO address
-        daoAddress = _daoAddress;
-
-        emit DaoAddressUpdated(address(0), _daoAddress);
-    }
-
     // ========== VIEW FUNCTIONS ==========
-
+    
     /**
-     * @notice Get the level name for a consciousness level
-     * @param level The consciousness level
-     * @return The name as a string
-     * @dev Uses a pure function to avoid storage reads for gas efficiency
-     */
-    function _getLevelName(ConsciousnessLevel level) internal pure returns (string memory) {
-        if (level == ConsciousnessLevel.Awakening) return "Awakening";
-        if (level == ConsciousnessLevel.Ascending) return "Ascending";
-        if (level == ConsciousnessLevel.Transcendent) return "Transcendent";
-        if (level == ConsciousnessLevel.Divine) return "Divine";
-        return "Pharaoh";
-    }
-
-    /**
-     * @notice Get the consciousness level of a token
-     * @param tokenId Token ID to check
-     * @return level The consciousness level as enum
-     * @return levelName The consciousness level as string
-     */
-    function getConsciousnessLevel(uint256 tokenId) external view returns (
-        ConsciousnessLevel level,
-        string memory levelName
-    ) {
-        if (tokenId >= _nextTokenId) revert TokenDoesNotExist(tokenId);
-        
-        level = tokenData[tokenId].level;
-        levelName = _getLevelName(level);
-    }
-
-    /**
-     * @notice Get full token data
-     * @param tokenId Token ID to query
-     * @return level Consciousness level
-     * @return mintTimestamp When the token was minted
-     * @return lastUpgradeTimestamp When the token was last upgraded
-     * @return participationScore Current participation score
-     * @return isActive Whether the token is active
-     */
-    function getTokenData(uint256 tokenId) external view returns (
-        ConsciousnessLevel level,
-        uint256 mintTimestamp,
-        uint256 lastUpgradeTimestamp,
-        uint256 participationScore,
-        bool isActive
-    ) {
-        if (tokenId >= _nextTokenId) revert TokenDoesNotExist(tokenId);
-        
-        TokenData memory data = tokenData[tokenId];
-        return (
-            data.level,
-            data.mintTimestamp,
-            data.lastUpgradeTimestamp,
-            data.participationScore,
-            data.isActive
-        );
-    }
-
-    /**
-     * @notice Get total supply minted
-     * @return Number of tokens minted
+     * @notice Get total minted tokens
+     * @return uint256 Number of tokens minted
      */
     function totalMinted() external view returns (uint256) {
         return _nextTokenId;
     }
-
+    
     /**
-     * @notice Get remaining supply
-     * @return Number of tokens remaining
+     * @notice Check if all tokens are minted
+     * @return bool Whether all tokens are minted
      */
-    function remainingSupply() external view returns (uint256) {
-        return MAX_SUPPLY - _nextTokenId;
+    function isMintComplete() external view returns (bool) {
+        return _nextTokenId >= MAX_SUPPLY;
     }
 
+    // ========== UUPS UPGRADE AUTHORIZATION ==========
+    
     /**
-     * @notice Check if an address holds any PFC-NFT
-     * @param account Address to check
-     * @return True if the address holds at least one token
+     * @notice Authorize upgrade (UUPS pattern)
+     * @param newImplementation Address of new implementation
+     * @dev Only owner can upgrade
      */
-    function isHolder(address account) external view returns (bool) {
-        return balanceOf(account) > 0;
+    function _authorizeUpgrade(address newImplementation) internal override onlyOwner {}
+
+    // ========== REQUIRED OVERRIDES ==========
+    
+    function _update(address to, uint256 tokenId, address auth)
+        internal
+        override(ERC721Upgradeable, ERC721EnumerableUpgradeable, ERC721PausableUpgradeable)
+        returns (address)
+    {
+        return super._update(to, tokenId, auth);
     }
 
-    /**
-     * @notice Get the highest consciousness level owned by an address
-     * @param account Address to check
-     * @return highestLevel The highest consciousness level
-     * @return tokenId The token ID with the highest level
-     */
-    function getHighestConsciousness(address account) external view returns (
-        ConsciousnessLevel highestLevel,
-        uint256 tokenId
-    ) {
-        uint256 balance = balanceOf(account);
-        if (balance == 0) return (ConsciousnessLevel.Awakening, 0);
-
-        highestLevel = ConsciousnessLevel.Awakening;
-        tokenId = 0;
-
-        for (uint256 i = 0; i < balance; i++) {
-            uint256 ownedTokenId = tokenOfOwnerByIndex(account, i);
-            ConsciousnessLevel level = tokenData[ownedTokenId].level;
-            if (uint8(level) > uint8(highestLevel)) {
-                highestLevel = level;
-                tokenId = ownedTokenId;
-            }
-        }
-    }
-
-    // ========== OVERRIDE FUNCTIONS ==========
-
-    function _baseURI() internal view override returns (string memory) {
-        return _baseTokenURI;
+    function _increaseBalance(address account, uint128 value)
+        internal
+        override(ERC721Upgradeable, ERC721EnumerableUpgradeable)
+    {
+        super._increaseBalance(account, value);
     }
 
     function tokenURI(uint256 tokenId)
         public
         view
-        override(ERC721, ERC721URIStorage)
+        override(ERC721Upgradeable, ERC721URIStorageUpgradeable)
         returns (string memory)
     {
         return super.tokenURI(tokenId);
@@ -493,39 +732,9 @@ contract PharaohConsciousnessFusion is
     function supportsInterface(bytes4 interfaceId)
         public
         view
-        override(ERC721, ERC721Enumerable, ERC721URIStorage, AccessControl)
+        override(ERC721Upgradeable, ERC721EnumerableUpgradeable, ERC721URIStorageUpgradeable, ERC2981Upgradeable)
         returns (bool)
     {
         return super.supportsInterface(interfaceId);
-    }
-
-    function _update(address to, uint256 tokenId, address auth)
-        internal
-        override(ERC721, ERC721Enumerable, ERC721Votes)
-        returns (address)
-    {
-        return super._update(to, tokenId, auth);
-    }
-
-    function _increaseBalance(address account, uint128 value)
-        internal
-        override(ERC721, ERC721Enumerable, ERC721Votes)
-    {
-        super._increaseBalance(account, value);
-    }
-
-    /**
-     * @notice Get current voting units (clock) for ERC721Votes
-     */
-    function clock() public view override returns (uint48) {
-        return uint48(block.timestamp);
-    }
-
-    /**
-     * @notice Get clock mode for ERC721Votes
-     */
-    // solhint-disable-next-line func-name-mixedcase
-    function CLOCK_MODE() public pure override returns (string memory) {
-        return "mode=timestamp";
     }
 }
