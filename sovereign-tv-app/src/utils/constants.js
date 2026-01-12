@@ -111,6 +111,8 @@ export const INTERACTION_FREQUENCIES = {
   COSMIC: '777Hz',
   HARMONY: '432Hz',
   MANIFESTATION: '369Hz'
+};
+
 // Cosmic String Frequencies
 export const COSMIC_STRING_FREQUENCIES = {
   '963Hz': { name: 'Divine Consciousness', power: 100, alignment: 'sovereign' },
@@ -208,7 +210,7 @@ export default {
   TYPE_VII_LEVEL_IDS,
   TECH_KIT_CATEGORY_IDS,
   USER_TYPE_IDS,
-  INTERACTION_FREQUENCIES
+  INTERACTION_FREQUENCIES,
   COSMIC_STRING_FREQUENCIES,
   QUANTUM_NODE_TYPES,
   GRAPH_TREE_BOUNDS,
