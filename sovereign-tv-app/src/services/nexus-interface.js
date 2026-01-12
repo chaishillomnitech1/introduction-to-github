@@ -356,7 +356,7 @@ nexusInterfaceRouter.get('/grok/threads', (req, res) => {
 });
 
 // Get Specific Grok Thread
-nexusInterfaceRouter.get('/grok/thread/:threadId', (req, res) => {
+nexusInterfaceRouter.get('/grok/thread/:threadId', standardLimiter, (req, res) => {
   const { threadId } = req.params;
   const thread = grokThreads.get(threadId);
   
@@ -408,7 +408,7 @@ nexusInterfaceRouter.post('/nft/register', authenticateToken, standardLimiter, (
 });
 
 // Get User NFT Priority
-nexusInterfaceRouter.get('/nft/priority', authenticateToken, (req, res) => {
+nexusInterfaceRouter.get('/nft/priority', authenticateToken, standardLimiter, (req, res) => {
   const username = req.user.username;
   const userNFTs = nftHoldings.get(username) || [];
   const priority = calculateNFTPriority(userNFTs);
@@ -440,7 +440,7 @@ nexusInterfaceRouter.get('/zakat/status', (req, res) => {
 });
 
 // Calculate Zakat on Amount
-nexusInterfaceRouter.post('/zakat/calculate', authenticateToken, (req, res) => {
+nexusInterfaceRouter.post('/zakat/calculate', authenticateToken, standardLimiter, (req, res) => {
   const { amount } = req.body;
   
   if (!amount || amount <= 0) {
@@ -587,7 +587,7 @@ nexusInterfaceRouter.post('/github/webhook', (req, res) => {
 });
 
 // Get GitHub Integration Logs
-nexusInterfaceRouter.get('/github/logs', authenticateToken, (req, res) => {
+nexusInterfaceRouter.get('/github/logs', authenticateToken, standardLimiter, (req, res) => {
   res.json({
     lastEvent: githubHooks.lastEvent,
     eventsTracked: githubHooks.eventsTracked,
