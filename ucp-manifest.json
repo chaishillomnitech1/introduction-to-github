@@ -1,0 +1,218 @@
+{
+  "$schema": "https://universalcommerceprotocol.org/schema/v1/manifest.json",
+  "version": "1.0.0",
+  "name": "ScrollVerse Universal Commerce Integration",
+  "description": "Universal Commerce Protocol integration for ScrollVerse - enabling agentic commerce flows for harmonic frequency assets",
+  "merchant": {
+    "id": "scrollverse-omnitech1",
+    "name": "ScrollVerse / OmniTech1",
+    "type": "merchant_of_record",
+    "owner": "chaishillomnitech1",
+    "sovereignty": {
+      "declaration": "Sovereign Chais owns every yield",
+      "license": "ScrollVerse Sovereign License (SSL v1.0)",
+      "governance": "SOPHIA AMENTI"
+    }
+  },
+  "commerce": {
+    "enabled": true,
+    "protocols": [
+      {
+        "name": "Model Context Protocol",
+        "version": "1.0",
+        "enabled": true,
+        "description": "AI agent communication and context sharing",
+        "endpoint": "https://api.scrollverse.com/mcp"
+      },
+      {
+        "name": "Agent Payments Protocol",
+        "version": "2.0",
+        "enabled": true,
+        "description": "Automated payment routing through AP2 for agentic commerce",
+        "endpoint": "https://api.scrollverse.com/ap2",
+        "features": [
+          "automated_zakat_routing",
+          "harmonic_pricing",
+          "multi_signature_treasury",
+          "real_time_settlement"
+        ]
+      },
+      {
+        "name": "Zakat Automation Framework",
+        "version": "1.0",
+        "enabled": true,
+        "description": "Automated 2.5% Zakat routing for all transactions",
+        "minimumZakat": "2.5%",
+        "treasuryAddress": "TO_BE_CONFIGURED_AT_DEPLOYMENT",
+        "endpoint": "https://api.scrollverse.com/zakat"
+      }
+    ],
+    "checkout": {
+      "nativeAI": {
+        "enabled": true,
+        "providers": [
+          {
+            "name": "Google Pay",
+            "enabled": true,
+            "merchantId": "scrollverse-omnitech1",
+            "supportedAssets": ["528Hz", "777Hz", "963Hz", "369Hz"],
+            "harmonicPricing": true
+          }
+        ]
+      },
+      "paymentMethods": [
+        "google_pay",
+        "crypto_wallet",
+        "credit_card",
+        "agent_to_agent"
+      ]
+    }
+  },
+  "assets": {
+    "frequencyAssets": [
+      {
+        "id": "528hz-love-frequency",
+        "name": "528Hz Love Frequency Asset",
+        "type": "digital_frequency",
+        "frequency": "528Hz",
+        "description": "Love and transformation frequency for healing and DNA repair",
+        "merchantOfRecord": true,
+        "pricing": {
+          "type": "harmonic",
+          "basePrice": {
+            "amount": 52.80,
+            "currency": "USD"
+          },
+          "zakatIncluded": true,
+          "zakatPercentage": 2.5
+        },
+        "checkout": {
+          "googlePay": true,
+          "aiNative": true
+        }
+      },
+      {
+        "id": "777hz-spiritual-perfection",
+        "name": "777Hz Spiritual Perfection Asset",
+        "type": "digital_frequency",
+        "frequency": "777Hz",
+        "description": "Spiritual perfection and divine alignment frequency",
+        "merchantOfRecord": true,
+        "pricing": {
+          "type": "harmonic",
+          "basePrice": {
+            "amount": 77.70,
+            "currency": "USD"
+          },
+          "zakatIncluded": true,
+          "zakatPercentage": 2.5
+        },
+        "checkout": {
+          "googlePay": true,
+          "aiNative": true
+        }
+      },
+      {
+        "id": "963hz-divine-frequency",
+        "name": "963Hz Divine Frequency Asset",
+        "type": "digital_frequency",
+        "frequency": "963Hz",
+        "description": "Divine consciousness and pineal gland activation",
+        "merchantOfRecord": true,
+        "pricing": {
+          "type": "harmonic",
+          "basePrice": {
+            "amount": 96.30,
+            "currency": "USD"
+          },
+          "zakatIncluded": true,
+          "zakatPercentage": 2.5
+        },
+        "checkout": {
+          "googlePay": true,
+          "aiNative": true
+        }
+      },
+      {
+        "id": "369hz-universal-frequency",
+        "name": "369Hz Universal Frequency Asset",
+        "type": "digital_frequency",
+        "frequency": "369Hz",
+        "description": "Universal divine code and manifestation frequency",
+        "merchantOfRecord": true,
+        "pricing": {
+          "type": "harmonic",
+          "basePrice": {
+            "amount": 36.90,
+            "currency": "USD"
+          },
+          "zakatIncluded": true,
+          "zakatPercentage": 2.5
+        },
+        "checkout": {
+          "googlePay": true,
+          "aiNative": true
+        }
+      }
+    ]
+  },
+  "integration": {
+    "googleCrawler": {
+      "ready": true,
+      "indexed": true,
+      "structuredData": true,
+      "productSchema": true
+    },
+    "apis": {
+      "baseUrl": "https://api.scrollverse.com",
+      "endpoints": {
+        "products": "/v1/commerce/products",
+        "checkout": "/v1/commerce/checkout",
+        "payments": "/v1/commerce/payments",
+        "zakat": "/v1/commerce/zakat",
+        "mcp": "/v1/mcp",
+        "ap2": "/v1/ap2"
+      },
+      "authentication": {
+        "type": "bearer_token",
+        "required": true
+      }
+    },
+    "webhooks": {
+      "enabled": true,
+      "events": [
+        "payment.completed",
+        "zakat.routed",
+        "asset.purchased",
+        "agent.transaction"
+      ],
+      "endpoint": "https://api.scrollverse.com/webhooks/commerce"
+    }
+  },
+  "compliance": {
+    "zakatCompliant": true,
+    "minimumZakatPercentage": 2.5,
+    "sslCompliant": true,
+    "sslVersion": "1.0",
+    "aiSafe": true,
+    "gdprCompliant": true,
+    "pciCompliant": true
+  },
+  "metadata": {
+    "createdAt": "2026-01-12T01:21:06.158Z",
+    "updatedAt": "2026-01-12T01:21:06.158Z",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Chais Hill",
+      "github": "chaishillomnitech1",
+      "email": "support@scrollverse.com"
+    },
+    "links": {
+      "website": "https://scrollverse.com",
+      "app": "https://app.scrollverse.com",
+      "docs": "https://docs.scrollverse.com",
+      "api": "https://api.scrollverse.com/docs",
+      "github": "https://github.com/chaishillomnitech1/introduction-to-github"
+    }
+  }
+}
