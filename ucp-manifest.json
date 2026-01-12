@@ -43,7 +43,7 @@
         "enabled": true,
         "description": "Automated 2.5% Zakat routing for all transactions",
         "minimumZakat": "2.5%",
-        "treasuryAddress": "0x0000000000000000000000000000000000000000",
+        "treasuryAddress": "TO_BE_CONFIGURED_AT_DEPLOYMENT",
         "endpoint": "https://api.scrollverse.com/zakat"
       }
     ],
