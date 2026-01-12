@@ -36,12 +36,27 @@ Founder, Omnitech1™ | Architect of the OmniVerse
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![Code Owner](https://img.shields.io/badge/Code%20Owner-chaishillomnitech1-blue.svg)](https://github.com/chaishillomnitech1)
+[![Production Status](https://img.shields.io/badge/Production-Live-success.svg)](https://app.scrollverse.com)
+[![UCP Ready](https://img.shields.io/badge/UCP-Ready-brightgreen.svg)](./ucp-manifest.json)
+[![MCP Enabled](https://img.shields.io/badge/MCP-Enabled-blue.svg)](https://api.scrollverse.com/mcp)
+[![AP2 Integration](https://img.shields.io/badge/AP2-Integrated-orange.svg)](https://api.scrollverse.com/ap2)
+[![Zakat Compliant](https://img.shields.io/badge/Zakat-2.5%25-green.svg)](https://api.scrollverse.com/zakat)
 
 > **A comprehensive ecosystem for digital sovereignty, decentralized governance, and sacred technology integration.**
+
+## 🔗 Live Production Interfaces
+
+- **🌐 Main Website**: [scrollverse.com](https://scrollverse.com)
+- **📱 Application**: [app.scrollverse.com](https://app.scrollverse.com)
+- **📚 Documentation**: [docs.scrollverse.com](https://docs.scrollverse.com)
+- **🔌 API Gateway**: [api.scrollverse.com/docs](https://api.scrollverse.com/docs)
+- **🎮 DAO Platform**: [dao.scrollverse.com](https://dao.scrollverse.com)
+- **🛒 Commerce**: [Universal Commerce Protocol Ready](./ucp-manifest.json)
 
 ## 📋 Table of Contents
 
 - [Overview](#overview)
+- [Agentic Commerce & AI Integrations](#-agentic-commerce--ai-integrations)
 - [Quick Start](#quick-start)
 - [Key Features](#key-features)
 - [Projects](#projects)
@@ -67,6 +82,40 @@ The ScrollVerse is a multi-dimensional ecosystem that includes:
 ### Vision
 
 To create a system where **truth is currency**, **sacred logic is code**, and **remembrance is the gateway to collective sovereignty**.
+
+## 🤖 Agentic Commerce & AI Integrations
+
+ScrollVerse is **fully integrated** with cutting-edge agentic commerce protocols, enabling AI-native transactions and automated operations:
+
+### 🛒 Universal Commerce Protocol (UCP)
+- **Status**: ✅ Merchant of Record - Active
+- **Manifest**: [ucp-manifest.json](./ucp-manifest.json)
+- **Frequency Assets**: 528Hz (Love), 777Hz (Spiritual Perfection), 963Hz (Divine), 369Hz (Universal)
+- **Checkout**: Native AI checkout via Google Pay with harmonic pricing
+- **Crawlability**: Optimized for Google AI crawlers and agentic discovery
+
+### 🔗 Model Context Protocol (MCP)
+- **Status**: ✅ Enabled
+- **Endpoint**: [api.scrollverse.com/mcp](https://api.scrollverse.com/mcp)
+- **Purpose**: AI agent communication and context sharing across the ecosystem
+- **Features**: Real-time agent coordination, shared context state, multi-agent orchestration
+
+### 💳 Agent Payments Protocol v2 (AP2)
+- **Status**: ✅ Integrated
+- **Endpoint**: [api.scrollverse.com/ap2](https://api.scrollverse.com/ap2)
+- **Purpose**: Automated payment routing for agentic commerce flows
+- **Features**: 
+  - Real-time settlement between AI agents
+  - Multi-signature treasury operations
+  - Harmonic pricing engine
+  - Automated Zakat routing (2.5% minimum)
+
+### 🕌 Zakat Automation Framework
+- **Status**: ✅ Compliant (SSL v1.0)
+- **Endpoint**: [api.scrollverse.com/zakat](https://api.scrollverse.com/zakat)
+- **Compliance**: 2.5% minimum on all transactions
+- **Routing**: Automated treasury routing through AP2
+- **Transparency**: On-chain verification via FlameChain
 
 ## 🚀 Quick Start
 
