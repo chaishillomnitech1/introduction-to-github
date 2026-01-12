@@ -969,14 +969,14 @@ festivalRouter.post('/incentives/checkin', authenticateToken, strictLimiter, (re
     success: true,
     streak: incentives.loginStreak,
     reward,
-    nextMilestone: getNextMilestone(incentives.loginStreak)
+    nextMilestone: getNextLoginMilestone(incentives.loginStreak)
   });
 });
 
 /**
  * Get next login milestone
  */
-function getNextMilestone(currentStreak) {
+function getNextLoginMilestone(currentStreak) {
   const milestones = incentivePrograms.dailyLogin.rewards;
   for (const milestone of milestones) {
     if (currentStreak < milestone.day) {
@@ -1040,5 +1040,3 @@ festivalRouter.get('/incentives', (req, res) => {
     mediaRewardTiers
   });
 });
-
-export { festivalRouter };

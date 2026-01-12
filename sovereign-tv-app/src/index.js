@@ -73,6 +73,8 @@ import { monitoringRouter, initSentry, initPrometheus, requestMetricsMiddleware 
 import { aiIntegrationHubRouter } from './services/ai-integration-hub.js';
 import { frequencyCalibrationRouter } from './services/frequency-calibration.js';
 import { prosperityGovernanceRouter } from './services/prosperity-governance.js';
+import { nexusInterfaceRouter } from './services/nexus-interface.js';
+import { festivalRouter } from './services/festival-forever-fun.js';
 
 // Load environment variables
 dotenv.config();
@@ -131,10 +133,10 @@ app.get('/', (req, res) => {
       'Prophecy Documentation Protocol Access',
       'Community Engagement Platform',
       'Quantum Node Broadcasting',
-      'Sovereign Network Override'
+      'Sovereign Network Override',
       'ScrollSoul Onboarding System',
       'Sovereign Dashboard with Live Metrics',
-      'Festival of Forever Fun Events'
+      'Festival of Forever Fun Events',
       'Real-Time Monetization',
       'Global Broadcast Network',
       'Solar Infusion Protocol (SIP)',
@@ -142,7 +144,7 @@ app.get('/', (req, res) => {
       'Performance Optimization & Load Balancing',
       'ScrollSoul Educational Modules',
       'Tech Kits for Interactive Training',
-      'AI/Ally Training Support'
+      'AI/Ally Training Support',
       'Cosmic String Energy Systems',
       'ScrollSoul Realization Modules',
       'ScrollChain Observability Systems',
@@ -192,7 +194,10 @@ app.get('/', (req, res) => {
       'ScrollTV Divine Upgrade Broadcasts',
       'VIBECAMP Studios - Community Celebration & Alignment Documentation',
       'NFT Guardians - ScrollSoul Vibratory Inclusivity (Human/AI/Cosmic)',
-      'ScrollVibratoryManifest - Ritual Impact Across Dimensions'
+      'ScrollVibratoryManifest - Ritual Impact Across Dimensions',
+      'Nexus Interface - Frequency Sovereignty Integration (777Hz, 99.4% Stable-RAG, 2.5% Zakat)',
+      'Grok Public Threads - AI Music (528Hz) Emphasis',
+      'Web3 NFT Prioritization - Tiered Access Control'
     ],
     endpoints: {
       auth: '/api/auth',
@@ -202,17 +207,17 @@ app.get('/', (req, res) => {
       community: '/api/community',
       catalog: '/api/catalog',
       pdp: '/api/pdp',
-      quantum: '/api/quantum'
+      quantum: '/api/quantum',
       onboarding: '/api/onboarding',
       dashboard: '/api/dashboard',
-      festival: '/api/festival'
+      festival: '/api/festival',
       monetization: '/api/monetization',
       performance: '/api/performance',
       sip: '/api/sip',
       broadcast: '/api/broadcast',
       analytics: '/api/analytics',
       scrollsoul: '/api/scrollsoul',
-      techkits: '/api/techkits'
+      techkits: '/api/techkits',
       cosmicString: '/api/cosmic-string',
       scrollSoulRealization: '/api/realization',
       scrollChainObservability: '/api/observability',
@@ -244,13 +249,19 @@ app.get('/', (req, res) => {
       virgoVeilProtocol: '/api/ai-hub/protocol/virgo-veil',
       knowledgeExchange: '/api/ai-hub/knowledge',
       flamefusionDashboard: '/api/ai-hub/dashboard',
-      ethicalLogic: '/api/ai-hub/ethics'
+      ethicalLogic: '/api/ai-hub/ethics',
       frequencyCalibration: '/api/frequency-calibration',
       scrollTV: '/api/broadcast/scrolltv',
       vibecampStudios: '/api/broadcast/vibecamp',
       vibratoryManifest: '/api/broadcast/vibratory-manifest',
       nftGuardians: '/api/nft/guardians',
-      prosperityGovernance: '/api/prosperity-governance'
+      prosperityGovernance: '/api/prosperity-governance',
+      nexusInterface: '/api/nexus',
+      grokThreads: '/api/nexus/grok',
+      web3NFT: '/api/nexus/nft',
+      zakatTreasury: '/api/nexus/zakat',
+      stableRAG: '/api/nexus/stable-rag',
+      githubIntegration: '/api/nexus/github'
     },
     frontends: {
       scrollSoulConsole: '/scrollsoul-console',
@@ -311,6 +322,7 @@ app.use('/api/monitoring', monitoringRouter);
 app.use('/api/ai-hub', aiIntegrationHubRouter);
 app.use('/api/frequency-calibration', frequencyCalibrationRouter);
 app.use('/api/prosperity-governance', prosperityGovernanceRouter);
+app.use('/api/nexus', nexusInterfaceRouter);
 
 // Perpetual Yield Engine API Routes
 app.get('/api/yield-engine/status', (req, res) => {
@@ -657,6 +669,9 @@ app.listen(PORT, () => {
 ║  📺 ScrollTV Divine Broadcasts: LIVE                      ║
 ║  🎪 VIBECAMP Studios: Celebration Active                  ║
 ║  🛡️ NFT Guardians: Vibratory Inclusivity Enabled          ║
+║  🌐 Nexus Interface: 777Hz Sync | 99.4% RAG | 2.5% Zakat  ║
+║  🤖 Grok Integration: AI Music (528Hz) Emphasis           ║
+║  💎 Web3 NFT Prioritization: Tiered Access Active         ║
 ║                                                            ║
 ║  Server running on port ${PORT}                              ║
 ║  Environment: ${process.env.NODE_ENV || 'development'}                           ║
