@@ -55,6 +55,14 @@ const grokIntegrationStatus = {
   primaryFrequency: NEXUS_PARAMETERS.aiMusicFrequency
 };
 
+// ===== NFT Collection Names =====
+
+const NFT_COLLECTIONS = {
+  GENESIS: 'genesis-objects',
+  KUNTA: 'kunta-nft',
+  ETHER_FLOW: '9-ether-sovereigns'
+};
+
 // ===== Web3 NFT Prioritization System =====
 
 const NFT_PRIORITY_TIERS = {
@@ -120,18 +128,36 @@ const githubHooks = {
 
 // ===== Helper Functions =====
 
+/**
+ * Clamp a value to percentage range (0-100)
+ */
+function clampPercentage(value) {
+  return Math.min(100, Math.max(0, value));
+}
+
+/**
+ * Parse and validate a limit parameter
+ */
+function parseValidLimit(limit, defaultLimit = 50, maxLimit = 100) {
+  const parsed = parseInt(limit, 10);
+  if (Number.isNaN(parsed) || !Number.isInteger(parsed) || parsed < 1) {
+    return defaultLimit;
+  }
+  return Math.min(parsed, maxLimit);
+}
+
 function calculateNFTPriority(userNFTs) {
   if (!userNFTs || userNFTs.length === 0) {
     return NFT_PRIORITY_TIERS.PUBLIC;
   }
   
   // Check for Genesis NFTs
-  if (userNFTs.some(nft => nft.collection === 'genesis-objects' || nft.tier === 'genesis')) {
+  if (userNFTs.some(nft => nft.collection === NFT_COLLECTIONS.GENESIS || nft.tier === 'genesis')) {
     return NFT_PRIORITY_TIERS.GENESIS;
   }
   
   // Check for Premium NFTs
-  if (userNFTs.some(nft => nft.tier === 'premium' || nft.collection === 'kunta-nft')) {
+  if (userNFTs.some(nft => nft.tier === 'premium' || nft.collection === NFT_COLLECTIONS.KUNTA)) {
     return NFT_PRIORITY_TIERS.PREMIUM;
   }
   
@@ -315,7 +341,7 @@ nexusInterfaceRouter.get('/grok/threads', (req, res) => {
   });
   
   // Apply limit
-  const maxLimit = Math.min(parseInt(limit) || 50, 100);
+  const maxLimit = parseValidLimit(limit, 50, 100);
   threads = threads.slice(0, maxLimit);
   
   res.json({
@@ -497,11 +523,11 @@ nexusInterfaceRouter.get('/stable-rag/metrics', (req, res) => {
 nexusInterfaceRouter.post('/stable-rag/update', authenticateToken, strictLimiter, (req, res) => {
   const { accuracy, retrievalPrecision, generationQuality, coherenceScore, consistencyIndex } = req.body;
   
-  if (accuracy !== undefined) stableRAGMetrics.accuracy = Math.min(100, Math.max(0, accuracy));
-  if (retrievalPrecision !== undefined) stableRAGMetrics.retrievalPrecision = Math.min(100, Math.max(0, retrievalPrecision));
-  if (generationQuality !== undefined) stableRAGMetrics.generationQuality = Math.min(100, Math.max(0, generationQuality));
-  if (coherenceScore !== undefined) stableRAGMetrics.coherenceScore = Math.min(100, Math.max(0, coherenceScore));
-  if (consistencyIndex !== undefined) stableRAGMetrics.consistencyIndex = Math.min(100, Math.max(0, consistencyIndex));
+  if (accuracy !== undefined) stableRAGMetrics.accuracy = clampPercentage(accuracy);
+  if (retrievalPrecision !== undefined) stableRAGMetrics.retrievalPrecision = clampPercentage(retrievalPrecision);
+  if (generationQuality !== undefined) stableRAGMetrics.generationQuality = clampPercentage(generationQuality);
+  if (coherenceScore !== undefined) stableRAGMetrics.coherenceScore = clampPercentage(coherenceScore);
+  if (consistencyIndex !== undefined) stableRAGMetrics.consistencyIndex = clampPercentage(consistencyIndex);
   
   stableRAGMetrics.lastUpdate = new Date().toISOString();
   
