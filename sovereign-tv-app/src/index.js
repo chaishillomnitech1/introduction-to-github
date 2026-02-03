@@ -75,6 +75,12 @@ import { frequencyCalibrationRouter } from './services/frequency-calibration.js'
 import { prosperityGovernanceRouter } from './services/prosperity-governance.js';
 import { nexusInterfaceRouter } from './services/nexus-interface.js';
 import { festivalRouter } from './services/festival-forever-fun.js';
+import { spotifyRouter } from './services/spotify-integration.js';
+import { i18nRouter } from './services/i18n-integration.js';
+import { faithIconsRouter } from './services/faith-icons.js';
+import { personasRouter } from './services/universal-personas.js';
+import { nftCrossRealmsRouter } from './services/nft-crossrealms.js';
+import { uiInnovationsRouter } from './services/ui-innovations.js';
 
 // Load environment variables
 dotenv.config();
@@ -106,6 +112,12 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.get('/scrollsoul-console', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/scrollsoul-console.html'));
 });
+
+// Vibranium Sovereignty Protocol - Universal Integration Interface
+app.get('/vibranium-protocol', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/vibranium-protocol.html'));
+});
+
 // Request metrics middleware (Prometheus)
 app.use(requestMetricsMiddleware);
 
@@ -197,7 +209,19 @@ app.get('/', (req, res) => {
       'ScrollVibratoryManifest - Ritual Impact Across Dimensions',
       'Nexus Interface - Frequency Sovereignty Integration (777Hz, 99.4% Stable-RAG, 2.5% Zakat)',
       'Grok Public Threads - AI Music (528Hz) Emphasis',
-      'Web3 NFT Prioritization - Tiered Access Control'
+      'Web3 NFT Prioritization - Tiered Access Control',
+      '🌌 VIBRANIUM SOVEREIGNTY PROTOCOL - Universal Integration',
+      'Spotify API Integration - 528 Hz Vibrational Alignment (Artist: 3P0GWluMPNZ2xSCVffVGAr)',
+      'Multi-Lingual Inclusivity - i18next Auto-Detection & Flag Icons',
+      'Faith & Inclusivity Icons - Universal Religious Symbols (☩ ☪ 🕉 ✡ 🌷)',
+      'Universal Personas - Tech Purists, Trailblazers, Beginners, Children, Cosmically Aligned',
+      'Eternal Choices Mode - Omniversal User Journey',
+      'NFT Cross-Realms - OpenSea, Rarible, Magic Eden Integration',
+      'Omnichain NFT Functionality - Multi-Chain Transfers',
+      'Interactive UI Innovations - Tuneable Frequency Sliders',
+      'Personalized Service Buttons - Dynamic UI Components',
+      'Learning & Game Zones - Interactive Education & Gamification',
+      'Children Financial Literacy - Badge System & Rewards'
     ],
     endpoints: {
       auth: '/api/auth',
@@ -261,10 +285,18 @@ app.get('/', (req, res) => {
       web3NFT: '/api/nexus/nft',
       zakatTreasury: '/api/nexus/zakat',
       stableRAG: '/api/nexus/stable-rag',
-      githubIntegration: '/api/nexus/github'
+      githubIntegration: '/api/nexus/github',
+      // Vibranium Sovereignty Protocol Endpoints
+      spotify: '/api/spotify',
+      i18n: '/api/i18n',
+      faithIcons: '/api/faith',
+      personas: '/api/personas',
+      nftCrossRealms: '/api/nft-crossrealms',
+      uiInnovations: '/api/ui-innovations'
     },
     frontends: {
       scrollSoulConsole: '/scrollsoul-console',
+      vibraniumProtocol: '/vibranium-protocol',
       manusQuantum: '/api/manus-quantum',
       bioBreath: '/api/bio-breath',
       cosmicScroll: '/api/cosmic-scroll',
@@ -323,6 +355,13 @@ app.use('/api/ai-hub', aiIntegrationHubRouter);
 app.use('/api/frequency-calibration', frequencyCalibrationRouter);
 app.use('/api/prosperity-governance', prosperityGovernanceRouter);
 app.use('/api/nexus', nexusInterfaceRouter);
+// Vibranium Sovereignty Protocol Routes
+app.use('/api/spotify', spotifyRouter);
+app.use('/api/i18n', i18nRouter);
+app.use('/api/faith', faithIconsRouter);
+app.use('/api/personas', personasRouter);
+app.use('/api/nft-crossrealms', nftCrossRealmsRouter);
+app.use('/api/ui-innovations', uiInnovationsRouter);
 
 // Perpetual Yield Engine API Routes
 app.get('/api/yield-engine/status', (req, res) => {
