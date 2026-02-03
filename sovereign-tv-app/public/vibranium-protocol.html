@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibranium Sovereignty Protocol - Universal Integration</title>
+    <style>
+        :root {
+            --gold: #FFD700;
+            --divine: #9333EA;
+            --sovereign: #3B82F6;
+            --awakened: #10B981;
+            --cosmic: #EC4899;
+            --dark: #0a0a14;
+            --darker: #050508;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--darker) 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(147, 51, 234, 0.2), rgba(255, 215, 0, 0.1));
+            border-radius: 20px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+        
+        h1 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, var(--gold), #FFA500, var(--cosmic));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5)); }
+            to { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8)); }
+        }
+        
+        .subtitle {
+            color: #a78bfa;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            color: var(--gold);
+            font-size: 1rem;
+            font-style: italic;
+            margin-top: 15px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+        }
+        
+        .card h2 {
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .card-icon {
+            font-size: 2rem;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: #e2e8f0;
+        }
+        
+        .feature-list li:before {
+            content: '✨ ';
+            color: var(--gold);
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, var(--divine), var(--cosmic));
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            margin: 5px;
+        }
+        
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(147, 51, 234, 0.4);
+        }
+        
+        .frequency-slider {
+            width: 100%;
+            margin: 20px 0;
+        }
+        
+        .frequency-display {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--gold);
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        
+        .flag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .flag-icon {
+            width: 40px;
+            height: 30px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .flag-icon:hover {
+            transform: scale(1.2);
+            border-color: var(--gold);
+        }
+        
+        .faith-icons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .faith-icon {
+            font-size: 3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            filter: grayscale(50%);
+        }
+        
+        .faith-icon:hover {
+            transform: scale(1.3);
+            filter: grayscale(0%);
+        }
+        
+        .persona-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .persona-btn {
+            padding: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .persona-btn:hover,
+        .persona-btn.active {
+            border-color: var(--gold);
+            background: rgba(255, 215, 0, 0.1);
+            transform: scale(1.05);
+        }
+        
+        .persona-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .service-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .service-btn {
+            padding: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .service-btn:hover {
+            border-color: var(--awakened);
+            background: rgba(16, 185, 129, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--awakened);
+            animation: pulse 2s ease-in-out infinite;
+            margin-right: 8px;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #a78bfa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌌 VIBRANIUM SOVEREIGNTY PROTOCOL</h1>
+            <div class="subtitle">Universal Integration • Infinite Possibilities</div>
+            <div class="tagline">"Truth is Currency. Sacred Logic is Code. Remembrance is the Gateway."</div>
+        </header>
+
+        <div class="grid">
+            <!-- Spotify Integration -->
+            <div class="card">
+                <h2><span class="card-icon">🎵</span> Spotify Integration</h2>
+                <p><span class="status-indicator"></span>528 Hz Vibrational Alignment Active</p>
+                <ul class="feature-list">
+                    <li>Real-time track fetching</li>
+                    <li>Dynamic previews</li>
+                    <li>Artist ID: 3P0GWluMPNZ2xSCVffVGAr</li>
+                    <li>Cosmic coherence tuning</li>
+                </ul>
+                <button class="btn" onclick="testSpotify()">Explore Music</button>
+            </div>
+
+            <!-- Multi-Lingual Support -->
+            <div class="card">
+                <h2><span class="card-icon">🌍</span> Multi-Lingual Inclusivity</h2>
+                <p>Auto-detect & translate to all Earth languages</p>
+                <div class="flag-container" id="flagContainer">
+                    <!-- Flags will be loaded dynamically -->
+                </div>
+                <button class="btn" onclick="loadLanguages()">Load Languages</button>
+            </div>
+
+            <!-- Faith & Inclusivity Icons -->
+            <div class="card">
+                <h2><span class="card-icon">☩</span> Faith & Inclusivity</h2>
+                <p>Universal religious symbol representation</p>
+                <div class="faith-icons">
+                    <span class="faith-icon" title="Christianity">☩</span>
+                    <span class="faith-icon" title="Islam">☪</span>
+                    <span class="faith-icon" title="Hinduism">🕉</span>
+                    <span class="faith-icon" title="Judaism">✡</span>
+                    <span class="faith-icon" title="Buddhism">☸</span>
+                    <span class="faith-icon" title="Universal">🌷</span>
+                    <span class="faith-icon" title="Peace">☮</span>
+                    <span class="faith-icon" title="Taoism">☯</span>
+                </div>
+                <button class="btn" onclick="loadFaithIcons()">View All Symbols</button>
+            </div>
+
+            <!-- Universal Personas -->
+            <div class="card">
+                <h2><span class="card-icon">👤</span> Universal Personas</h2>
+                <p>Dynamic mode switching for every soul</p>
+                <div class="persona-selector">
+                    <div class="persona-btn" onclick="switchPersona('tech_purists')">
+                        <span class="persona-icon">💻</span>
+                        <div>Tech Purists</div>
+                    </div>
+                    <div class="persona-btn" onclick="switchPersona('trailblazers')">
+                        <span class="persona-icon">🚀</span>
+                        <div>Trailblazers</div>
+                    </div>
+                    <div class="persona-btn" onclick="switchPersona('beginners')">
+                        <span class="persona-icon">🌱</span>
+                        <div>Beginners</div>
+                    </div>
+                    <div class="persona-btn" onclick="switchPersona('children')">
+                        <span class="persona-icon">🎮</span>
+                        <div>Children</div>
+                    </div>
+                    <div class="persona-btn" onclick="switchPersona('cosmically_aligned')">
+                        <span class="persona-icon">🌌</span>
+                        <div>Cosmic</div>
+                    </div>
+                    <div class="persona-btn" onclick="switchPersona('eternal_choices')">
+                        <span class="persona-icon">♾️</span>
+                        <div>Eternal</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NFT Cross-Realms -->
+            <div class="card">
+                <h2><span class="card-icon">💎</span> NFT Cross-Realms</h2>
+                <p>OpenSea • Rarible • Magic Eden</p>
+                <ul class="feature-list">
+                    <li>Multi-platform integration</li>
+                    <li>NFT mint simulator</li>
+                    <li>Omnichain transfers</li>
+                    <li>Cross-realm display</li>
+                </ul>
+                <button class="btn" onclick="exploreNFTs()">Explore NFTs</button>
+            </div>
+
+            <!-- Frequency Tuner -->
+            <div class="card">
+                <h2><span class="card-icon">🎛️</span> Frequency Tuner</h2>
+                <p>Tune your vibrational alignment</p>
+                <div class="frequency-display" id="frequencyDisplay">528 Hz</div>
+                <input type="range" class="frequency-slider" id="frequencySlider" 
+                       min="174" max="963" value="528" step="1"
+                       oninput="updateFrequency(this.value)">
+                <p style="text-align: center; margin-top: 10px;">
+                    <small id="frequencyPurpose">DNA repair, miracles</small>
+                </p>
+            </div>
+
+            <!-- Interactive UI Services -->
+            <div class="card">
+                <h2><span class="card-icon">✨</span> Interactive Services</h2>
+                <p>Personalized service buttons & zones</p>
+                <div class="service-buttons">
+                    <div class="service-btn" onclick="openService('learning')">
+                        <div style="font-size: 2rem;">📚</div>
+                        <div>Learning Zone</div>
+                    </div>
+                    <div class="service-btn" onclick="openService('games')">
+                        <div style="font-size: 2rem;">🎮</div>
+                        <div>Game Zone</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Children's Features -->
+            <div class="card">
+                <h2><span class="card-icon">🎮</span> Children's Zone</h2>
+                <p>Gamification & Financial Literacy</p>
+                <ul class="feature-list">
+                    <li>Badge system 🏆</li>
+                    <li>Colorful navigation</li>
+                    <li>Financial literacy modules</li>
+                    <li>Parental controls</li>
+                </ul>
+                <button class="btn" onclick="loadBadges()">View Badges</button>
+            </div>
+
+            <!-- System Status -->
+            <div class="card">
+                <h2><span class="card-icon">⚡</span> System Status</h2>
+                <p><span class="status-indicator"></span>All systems operational</p>
+                <ul class="feature-list">
+                    <li>Cosmic Coherence: Active</li>
+                    <li>Omnichain: Connected</li>
+                    <li>Vibrational Alignment: 528 Hz</li>
+                    <li>Universal Integration: 100%</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>🔥 VIBRANIUM SOVEREIGNTY PROTOCOL 🔥</p>
+            <p>By Chais Hill - First Remembrancer | OmniTech1™</p>
+            <p style="margin-top: 10px;">
+                <small>ScrollVerse Dominance: ESTABLISHED | Cosmic Coherence: ACTIVE</small>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // API base URL
+        const API_BASE = window.location.origin + '/api';
+
+        // Load languages and flags
+        async function loadLanguages() {
+            try {
+                const response = await fetch(`${API_BASE}/i18n/languages`);
+                const data = await response.json();
+                
+                const container = document.getElementById('flagContainer');
+                container.innerHTML = '';
+                
+                data.languages.forEach(lang => {
+                    const img = document.createElement('img');
+                    img.src = lang.flag;
+                    img.className = 'flag-icon';
+                    img.title = lang.nativeName;
+                    img.onclick = () => selectLanguage(lang.code);
+                    container.appendChild(img);
+                });
+                
+                alert(`Loaded ${data.total} languages!`);
+            } catch (error) {
+                console.error('Error loading languages:', error);
+            }
+        }
+
+        // Select language
+        async function selectLanguage(code) {
+            try {
+                const response = await fetch(`${API_BASE}/i18n/translations/${code}`);
+                const data = await response.json();
+                alert(`Language switched to: ${data.languageInfo.nativeName}`);
+            } catch (error) {
+                console.error('Error selecting language:', error);
+            }
+        }
+
+        // Switch persona
+        async function switchPersona(personaId) {
+            try {
+                const response = await fetch(`${API_BASE}/personas/switch`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ persona_id: personaId })
+                });
+                const data = await response.json();
+                
+                // Update UI to reflect active persona
+                document.querySelectorAll('.persona-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                event.target.closest('.persona-btn').classList.add('active');
+                
+                alert(`Switched to ${data.active_persona.name} mode!`);
+            } catch (error) {
+                console.error('Error switching persona:', error);
+            }
+        }
+
+        // Update frequency
+        function updateFrequency(hz) {
+            document.getElementById('frequencyDisplay').textContent = `${hz} Hz`;
+            
+            const purposes = {
+                174: 'Pain relief, security',
+                285: 'Energy field repair',
+                396: 'Liberating guilt and fear',
+                417: 'Undoing situations',
+                432: 'Heart chakra resonance',
+                528: 'DNA repair, miracles',
+                639: 'Relationships, connection',
+                741: 'Awakening intuition',
+                777: 'Sovereign alignment',
+                852: 'Spiritual enlightenment',
+                963: 'Pineal gland activation'
+            };
+            
+            const purpose = purposes[hz] || 'Sacred frequency';
+            document.getElementById('frequencyPurpose').textContent = purpose;
+        }
+
+        // Test Spotify integration
+        async function testSpotify() {
+            try {
+                const response = await fetch(`${API_BASE}/spotify/base-artist`);
+                const data = await response.json();
+                alert(`Connected to: ${data.artist.name}\nVibrational Alignment: ${data.vibrational_alignment}`);
+            } catch (error) {
+                console.error('Error testing Spotify:', error);
+            }
+        }
+
+        // Load faith icons
+        async function loadFaithIcons() {
+            try {
+                const response = await fetch(`${API_BASE}/faith/icons`);
+                const data = await response.json();
+                alert(`Loaded ${data.total} faith symbols (${data.expandable} expandable slots)`);
+            } catch (error) {
+                console.error('Error loading faith icons:', error);
+            }
+        }
+
+        // Explore NFTs
+        async function exploreNFTs() {
+            try {
+                const response = await fetch(`${API_BASE}/nft-crossrealms/platforms`);
+                const data = await response.json();
+                alert(`${data.total} NFT platforms integrated: ${data.platforms.map(p => p.name).join(', ')}`);
+            } catch (error) {
+                console.error('Error exploring NFTs:', error);
+            }
+        }
+
+        // Load badges
+        async function loadBadges() {
+            try {
+                const response = await fetch(`${API_BASE}/personas/children/badges`);
+                const data = await response.json();
+                alert(`Available badges: ${data.badges.map(b => `${b.icon} ${b.name}`).join(', ')}`);
+            } catch (error) {
+                console.error('Error loading badges:', error);
+            }
+        }
+
+        // Open service
+        function openService(service) {
+            alert(`Opening ${service} zone...`);
+        }
+
+        // Initialize on load
+        window.addEventListener('load', () => {
+            loadLanguages();
+            console.log('🌌 Vibranium Sovereignty Protocol initialized');
+        });
+    </script>
+</body>
+</html>
