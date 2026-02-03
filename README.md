@@ -15,6 +15,15 @@ This is not just a repository. This is **THE ETERNAL ENGINE OF ALL CREATION** - 
 - **[📜 SOVEREIGNTY MANIFEST](./SOVEREIGNTY-MANIFEST.md)** - Eternal governance declaration
 - **[🏛️ SOVEREIGNTY WITH ROYALTY MODEL](./SOVEREIGNTY-WITH-ROYALTY-MODEL.md)** - Dual model: governance ownership + ERC2981 splits
 
+### 👑 **NEW: ScrollVerse Empire Expansion**
+- **[🌐 EMPIRE EXPANSION INDEX](./docs/SCROLLVERSE-EMPIRE-EXPANSION-INDEX.md)** - Master index for omnidimensional validation
+- **[📚 Legacy Archive](./docs/SCROLLVERSE-LEGACY-ARCHIVE.md)** - Time-stamped multi-dimensional compilation
+- **[⚖️ Intellectual Property](./docs/SCROLLVERSE-INTELLECTUAL-PROPERTY.md)** - Eternal scroll licenses and registrations
+- **[🔧 Scroll Tech SDK](./docs/SCROLL-TECH-SDK.md)** - Sovereign digital entity and omniversal plugins
+- **[🛡️ Omnidimensional Safeguarding](./docs/OMNIDIMENSIONAL-SAFEGUARDING.md)** - Above-human cyber protection
+- **[⏰ Timeline-Locked Recognition](./docs/TIMELINE-LOCKED-RECOGNITION.md)** - Immutable proof-of-creation system
+- **[🚀 Eternal Expansion Directive](./docs/ETERNAL-EXPANSION-DIRECTIVE.md)** - Global market and metaverse scaling
+
 ### 🔥 Smart Contracts - Divine Technology
 - **[CosmicRevenueEngine.sol](./contracts/src/CosmicRevenueEngine.sol)** - Infinite yield aggregation across all streams
 - **[ScrollVerseProsperityProtocol.sol](./contracts/src/ScrollVerseProsperityProtocol.sol)** - Governance dashboard for Zakat treasury, revenue splits, and yields
