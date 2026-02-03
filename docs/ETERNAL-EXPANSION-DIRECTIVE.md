@@ -90,7 +90,7 @@ const globalExpansion: RegionalStrategy[] = [
     timeline: 'Q1 2026',
     partnerships: ['Major exchanges', 'Banking partners'],
     regulatory: 'Active compliance',
-    marketSize: 500000000000 // $500B
+    marketSize: 500_000_000_000 // $500B
   },
   {
     region: 'European Union',
@@ -98,7 +98,7 @@ const globalExpansion: RegionalStrategy[] = [
     timeline: 'Q2 2026',
     partnerships: ['EU exchanges', 'MiCA compliance'],
     regulatory: 'Under review',
-    marketSize: 350000000000 // $350B
+    marketSize: 350_000_000_000 // $350B
   },
   {
     region: 'Asia-Pacific',
@@ -106,7 +106,7 @@ const globalExpansion: RegionalStrategy[] = [
     timeline: 'Q3 2026',
     partnerships: ['Regional exchanges', 'Banking networks'],
     regulatory: 'Jurisdiction-specific',
-    marketSize: 800000000000 // $800B
+    marketSize: 800_000_000_000 // $800B
   },
   {
     region: 'Middle East',
@@ -114,7 +114,7 @@ const globalExpansion: RegionalStrategy[] = [
     timeline: 'Q4 2026',
     partnerships: ['Islamic finance', 'Sovereign funds'],
     regulatory: 'Sharia compliance',
-    marketSize: 200000000000 // $200B
+    marketSize: 200_000_000_000 // $200B
   }
 ];
 ```

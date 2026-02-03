@@ -25,6 +25,8 @@ The **Timeline-Locked Recognition System** establishes an immutable, searchable 
 pragma solidity ^0.8.20;
 
 contract TimelineRegistry {
+    address public immutable sovereignAddress;
+    
     struct Innovation {
         bytes32 innovationId;
         string name;
@@ -53,6 +55,11 @@ contract TimelineRegistry {
         address indexed verifier,
         uint256 timestamp
     );
+    
+    constructor(address _sovereignAddress) {
+        require(_sovereignAddress != address(0), "Invalid sovereign address");
+        sovereignAddress = _sovereignAddress;
+    }
     
     function registerInnovation(
         string memory name,
@@ -232,8 +239,9 @@ CREATE (i)-[:INFLUENCES]->(i2:Innovation {name: 'Related Innovation'})
 ```typescript
 class ProofOfCreation {
   async generateProof(innovation: Innovation): Promise<Proof> {
-    // Step 1: Generate content hash
-    const contentHash = sha256(JSON.stringify(innovation));
+    // Step 1: Generate content hash (with deterministic serialization)
+    const sortedInnovation = this.sortObjectKeys(innovation);
+    const contentHash = sha256(JSON.stringify(sortedInnovation));
     
     // Step 2: Create proof object
     const proof = {

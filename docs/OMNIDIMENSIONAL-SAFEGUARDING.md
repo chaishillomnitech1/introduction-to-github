@@ -83,7 +83,10 @@ contract SecureScrollContract {
 encryption:
   at_rest:
     algorithm: AES-256-GCM
-    key_management: AWS KMS + Hardware Security Modules (HSM)
+    key_management: 
+      primary: AWS KMS (cloud-based)
+      backup: On-premise HSMs (geographically distributed)
+      multi_cloud: Separate key hierarchies per cloud provider (AWS, GCP, Azure)
     rotation: 90-day automatic rotation
   
   in_transit:

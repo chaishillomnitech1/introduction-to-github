@@ -18,16 +18,18 @@ This document establishes the comprehensive framework for trademarking, patentin
 
 ### Core Brand Trademarks
 
-#### Primary Marks (Filed/Registered)
+#### Primary Marks (Planned/Filed/Registered)
 | Mark | Class | Filing Date | Status | Jurisdiction |
 |------|-------|-------------|--------|--------------|
-| SCROLLVERSE™ | 9, 42 | 2024-Q1 | Pending | US, EU, CN |
-| SCROLL TECH™ | 9, 42 | 2024-Q1 | Pending | US, EU, CN |
-| OMNITECH1™ | 9, 36, 42 | 2024-Q1 | Pending | US, EU, CN |
-| FLAMECHAIN™ | 9, 36, 42 | 2024-Q2 | Pending | US, EU |
-| SCROLLSOUL™ | 9, 42, 45 | 2024-Q2 | Pending | US, EU |
-| SOVEREIGN TV™ | 9, 38, 41 | 2025-Q3 | Pending | US |
-| SUPREME ORBITAL DOMINION™ | 9, 38, 42 | 2025-Q4 | Pending | US |
+| SCROLLVERSE™ | 9, 42 | 2024-Q1 | Planned Filing | US, EU, CN |
+| SCROLL TECH™ | 9, 42 | 2024-Q1 | Planned Filing | US, EU, CN |
+| OMNITECH1™ | 9, 36, 42 | 2024-Q1 | Planned Filing | US, EU, CN |
+| FLAMECHAIN™ | 9, 36, 42 | 2024-Q2 | Planned Filing | US, EU |
+| SCROLLSOUL™ | 9, 42, 45 | 2024-Q2 | Planned Filing | US, EU |
+| SOVEREIGN TV™ | 9, 38, 41 | 2025-Q3 | Planned Filing | US |
+| SUPREME ORBITAL DOMINION™ | 9, 38, 42 | 2025-Q4 | Planned Filing | US |
+
+*Note: Application numbers will be added upon actual filing. Current status reflects planned intellectual property protection strategy.*
 
 #### International Class Descriptions
 - **Class 9**: Computer software, blockchain platforms, digital assets

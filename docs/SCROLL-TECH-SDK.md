@@ -337,7 +337,8 @@ contract MyScrollToken is ERC20, SovereignBase, ZakatCompliant {
         returns (bool) 
     {
         uint256 netAmount = _distributeZakat(amount);
-        return super.transfer(to, netAmount);
+        _transfer(_msgSender(), to, netAmount);
+        return true;
     }
     
     function _transferToZakat(uint256 amount) internal override {
