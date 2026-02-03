@@ -8,6 +8,9 @@
  * - Flag icons integration
  * - All Earth languages support
  * 
+ * Note: This implementation uses in-memory translations for simplicity.
+ * In production, integrate with i18next library for advanced features.
+ * 
  * @author Chais Hill - OmniTech1
  */
 

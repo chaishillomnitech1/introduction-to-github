@@ -7,11 +7,13 @@
  * - Dynamic previews
  * - Artist ID 3P0GWluMPNZ2xSCVffVGAr as base
  * 
+ * Note: This implementation uses mock data for demonstration.
+ * In production, use axios to integrate with actual Spotify Web API.
+ * 
  * @author Chais Hill - OmniTech1
  */
 
 import express from 'express';
-import axios from 'axios';
 
 const router = express.Router();
 

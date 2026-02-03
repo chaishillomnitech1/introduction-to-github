@@ -12,8 +12,16 @@
  */
 
 import express from 'express';
+import crypto from 'crypto';
 
 const router = express.Router();
+
+/**
+ * Generate a simulated transaction hash using crypto
+ */
+function generateTransactionHash() {
+  return '0x' + crypto.randomBytes(32).toString('hex');
+}
 
 // Supported NFT platforms
 const platforms = {
@@ -196,7 +204,7 @@ router.post('/mint', (req, res) => {
     success: true,
     message: 'NFT minted successfully (simulated)',
     nft,
-    transaction_hash: `0x${Math.random().toString(16).substr(2, 64)}`,
+    transaction_hash: generateTransactionHash(),
     note: 'This is a simulation. In production, this would execute on-chain.'
   });
 });
@@ -253,7 +261,7 @@ router.post('/omnichain-transfer', (req, res) => {
     status: 'bridging',
     estimated_time: '5-10 minutes',
     bridge_fee: '0.001 ETH',
-    transaction_hash: `0x${Math.random().toString(16).substr(2, 64)}`,
+    transaction_hash: generateTransactionHash(),
     initiated_at: new Date().toISOString()
   };
   
