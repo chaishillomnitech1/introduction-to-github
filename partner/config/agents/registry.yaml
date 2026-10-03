@@ -1,0 +1,12 @@
+# Specialist registry. Tools are least-privilege scopes.
+specialists:
+  - {id: strategist, skills: [strategy, planning, prioritization], tools: [docs], model_class: reasoning, cost: 3}
+  - {id: researcher, skills: [research, analysis, summarization], tools: [search, docs], model_class: reasoning, cost: 3}
+  - {id: writer, skills: [copywriting, writing, editing], tools: [docs], model_class: general, cost: 2}
+  - {id: marketer, skills: [marketing, campaigns, social], tools: [docs, analytics], model_class: general, cost: 2}
+  - {id: designer, skills: [design, branding], tools: [design], model_class: multimodal, cost: 3}
+  - {id: engineer, skills: [code, automation, integrations], tools: [git], model_class: code, cost: 4}
+  - {id: operator, skills: [scheduling, follow-up, operations], tools: [calendar, email_draft], model_class: general, cost: 1}
+  - {id: analyst, skills: [analytics, reporting, kpi], tools: [analytics], model_class: reasoning, cost: 2}
+  - {id: support, skills: [support, customer, replies], tools: [helpdesk], model_class: general, cost: 1}
+  - {id: finance, skills: [finance, budgeting, forecasting], tools: [accounting_read], model_class: reasoning, cost: 3}

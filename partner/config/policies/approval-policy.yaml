@@ -1,0 +1,8 @@
+default_tier: T2   # fail closed
+tiers:
+  T0: {approval: none, actions: [research, draft, plan, analyze]}
+  T1: {approval: none, log: true, actions: [update_task, schedule_internal]}
+  T2: {approval: human, expires_hours: 24, actions: [send_email, publish, merge_code, spend_under_100]}
+  T3: {approval: dual_human, actions: [sign_contract, payment, delete_data, change_credentials, spend_100_plus]}
+sentinel: {pass: 85, pass_with_notes: 70, max_retries: 2, can_raise_tier: true, can_lower_tier: false}
+escalation: {min_confidence: 0.6, budget_alert_pct: 80}
